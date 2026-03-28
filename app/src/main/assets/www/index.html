@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Bio Logger - Neural Suite</title>
+
+    <!-- External Assets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+
+    <!-- FUTURISTIC SPLASH SCREEN -->
+    <div id="splash-screen" class="screen active">
+        <div class="splash-content" style="text-align: center;">
+            <div class="logo-container">
+                <svg viewBox="0 0 100 100" class="tree-logo">
+                    <!-- High-Tech Tree Logo -->
+                    <defs>
+                        <linearGradient id="tree-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00e676;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00c853;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 15 L35 45 L45 45 L30 75 L70 75 L55 45 L65 45 Z" fill="url(#tree-grad)" />
+                    <rect x="47" y="75" width="6" height="10" fill="#00c853" />
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary)" stroke-width="1" stroke-dasharray="5,5" />
+                </svg>
+            </div>
+            <h1>Bio Logger</h1>
+            <p style="color: var(--text-muted); letter-spacing: 4px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-top: 10px;">Environmental Intelligence</p>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="screen">
+        <div class="login-card glass">
+            <h2 style="margin-bottom: 8px;">Neural Link</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 30px;">Initialize researcher credentials</p>
+            <div class="form-group">
+                <input type="email" id="login-email" placeholder="Researcher Email" class="glass-input">
+                <input type="password" id="login-pass" placeholder="Biometric Token" class="glass-input">
+                <button id="btn-login" class="primary-btn" style="margin-top: 20px;">AUTHORIZE</button>
+                <div class="divider"><span>OR</span></div>
+                <button id="btn-guest" class="secondary-btn">GUEST PROTOCOL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP INTERFACE -->
+    <div id="app-container" class="hidden">
+        <header>
+            <div class="header-left">
+                <button id="btn-back" class="icon-btn hidden">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <h1 id="screen-title">Bio Logger</h1>
+            </div>
+            <div class="header-right">
+                <button id="btn-settings" class="icon-btn glass">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="content-section active">
+                <div class="telemetry-grid">
+                    <div class="telemetry-card">
+                        <span class="tel-label">GEOLOCATION</span>
+                        <span id="tel-gps" class="tel-value">STABLE</span>
+                    </div>
+                    <div class="telemetry-card">
+                        <span class="tel-label">THERMAL</span>
+                        <span id="tel-temp" class="tel-value">--°C</span>
+                    </div>
+                    <div class="telemetry-card">
+                        <span class="tel-label">ELEVATION</span>
+                        <span id="tel-elev" class="tel-value">--m</span>
+                    </div>
+                    <div class="telemetry-card">
+                        <span class="tel-label">HUMIDITY</span>
+                        <span id="tel-hum" class="tel-value">--%</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-section" style="margin-top: 35px;">
+                    <h3 style="text-transform: uppercase; font-size: 0.65rem; letter-spacing: 3px; margin-bottom: 20px; color: var(--primary);">Quick Access Modules</h3>
+                    <div class="tools-grid">
+                        <div class="tool-card" style="padding: 20px;" data-tool="forest">🌲<br><small>Forest</small></div>
+                        <div class="tool-card" style="padding: 20px;" data-tool="agro">🧪<br><small>Agro</small></div>
+                        <div class="tool-card" style="padding: 20px;" data-tool="garden">🏡<br><small>Garden</small></div>
+                        <div class="tool-card" style="padding: 20px;" data-tool="note">📝<br><small>Vault</small></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TOOLS HUB -->
+            <section id="tools" class="content-section">
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="forest">
+                        <div class="tool-icon">🌲</div>
+                        <h3>Forest Matrix</h3>
+                        <p>Ecology & Spatial Data</p>
+                    </div>
+                    <div class="tool-card" data-tool="agro">
+                        <div class="tool-icon">🧪</div>
+                        <h3>Agro Lab</h3>
+                        <p>Climatic Experiments</p>
+                    </div>
+                    <div class="tool-card" data-tool="garden">
+                        <div class="tool-icon">🏡</div>
+                        <h3>Garden Scape</h3>
+                        <p>Growth & Logistics</p>
+                    </div>
+                    <div class="tool-card" data-tool="note">
+                        <div class="tool-icon">📝</div>
+                        <h3>Note Vault</h3>
+                        <p>Neural Field Notes</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ARCHIVE -->
+            <section id="data" class="content-section">
+                <div class="glass" style="padding: 10px; margin-bottom: 20px; border-radius: 20px;">
+                    <select id="data-filter-tool" class="glass-input" style="width: 100%; border: none; background: transparent !important;">
+                        <option value="all">Full Data Stream</option>
+                        <option value="forest">Forest Matrix</option>
+                        <option value="agro">Agro Lab</option>
+                        <option value="garden">Garden Scape</option>
+                        <option value="note">Note Vault</option>
+                    </select>
+                </div>
+
+                <div class="export-actions" style="display: flex; gap: 12px; margin-bottom: 25px; overflow-x: auto; padding: 5px;">
+                    <button id="btn-export-excel" class="icon-btn-small glass" style="white-space: nowrap; color: var(--primary); padding: 12px 20px;">EXCEL .XLSX</button>
+                    <button id="btn-export-json" class="icon-btn-small glass" style="white-space: nowrap; padding: 12px 20px;">JSON STREAM</button>
+                    <button id="btn-export-csv" class="icon-btn-small glass" style="white-space: nowrap; padding: 12px 20px;">CSV ARCHIVE</button>
+                </div>
+
+                <div id="unified-data-list" class="data-entries-scroll"></div>
+            </section>
+
+            <!-- SUB-TOOLS -->
+            <!-- FOREST -->
+            <section id="forest-capture" class="content-section sub-tool">
+                <div class="tool-session-bar glass">
+                    <select class="active-survey-select glass-input" style="flex:1; border:none; background: transparent !important;"></select>
+                    <button class="btn-new-survey-tool primary-btn" style="width:auto; padding: 10px 20px; border-radius: 12px;">NEW</button>
+                </div>
+                <div id="forest-menu" class="sub-menu-grid">
+                    <div class="sub-tool-card glass" data-tab="f-quad"><span>⬛</span><h4>Quadrat</h4></div>
+                    <div class="sub-tool-card glass" data-tab="f-tran"><span>➖</span><h4>Transect</h4></div>
+                    <div class="sub-tool-card glass" data-tab="f-env"><span>☁️</span><h4>Substrate</h4></div>
+                    <div class="sub-tool-card glass" data-tab="f-map"><span>📍</span><h4>Spatial</h4></div>
+                </div>
+                <div id="forest-content" class="sub-content hidden">
+                    <div class="tool-tabs glass">
+                        <button class="tab-btn" data-tab="f-quad">Quadrat</button>
+                        <button class="tab-btn" data-tab="f-tran">Transect</button>
+                        <button class="tab-btn" data-tab="f-env">Substrate</button>
+                        <button class="tab-btn" data-tab="f-map">Spatial</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="f-quad" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="fq-species" placeholder="Specimen Identification" list="species-list">
+                                <div class="input-row">
+                                    <input type="number" id="fq-dbh" placeholder="DBH (cm)">
+                                    <input type="number" id="fq-height" placeholder="Height (m)">
+                                </div>
+                                <select id="fq-health" class="glass-input">
+                                    <option value="Healthy">Vibrant</option>
+                                    <option value="Fair">Stressed</option>
+                                    <option value="Poor">Degraded</option>
+                                </select>
+                                <button id="btn-fq-save" class="primary-btn">COMMIT DATA</button>
+                            </div>
+                        </div>
+                        <div id="f-tran" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="number" id="ft-dist" placeholder="Vector Distance (m)">
+                                <input type="text" id="ft-species" placeholder="Specimen Identified" list="species-list">
+                                <input type="number" id="ft-count" placeholder="Quantity Count">
+                                <button id="btn-ft-save" class="primary-btn">RECORD VECTOR</button>
+                            </div>
+                        </div>
+                        <div id="f-map" class="tab-pane"><div id="map-container" class="glass" style="height: 400px;"></div></div>
+                        <div id="f-env" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="number" id="fe-canopy" placeholder="Canopy Closure %">
+                                <input type="text" id="fe-soil" placeholder="Geological Substrate">
+                                <button id="btn-fe-save" class="primary-btn">SYNC SENSORS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AGRO LAB -->
+            <section id="agro-lab" class="content-section sub-tool">
+                <div class="tool-session-bar glass">
+                    <select class="active-survey-select glass-input" style="flex:1; border:none; background: transparent !important;"></select>
+                    <button class="btn-new-survey-tool primary-btn" style="width:auto; padding: 10px 20px; border-radius: 12px;">NEW</button>
+                </div>
+                <div id="agro-menu" class="sub-menu-grid">
+                    <div class="sub-tool-card glass" data-tab="a-germ"><span>🌱</span><h4>Germ</h4></div>
+                    <div class="sub-tool-card glass" data-tab="a-phen"><span>📈</span><h4>Growth</h4></div>
+                    <div class="sub-tool-card glass" data-tab="a-trial"><span>🪴</span><h4>Trials</h4></div>
+                    <div class="sub-tool-card glass" data-tab="a-water"><span>💧</span><h4>H2O</h4></div>
+                    <div class="sub-tool-card glass" data-tab="a-health"><span>🐛</span><h4>Alerts</h4></div>
+                    <div class="sub-tool-card glass" data-tab="a-env"><span>🌡️</span><h4>Sensors</h4></div>
+                </div>
+                <div id="agro-content" class="sub-content hidden">
+                    <div class="tool-tabs glass">
+                        <button class="tab-btn" data-tab="a-germ">Seeds</button>
+                        <button class="tab-btn" data-tab="a-phen">Growth</button>
+                        <button class="tab-btn" data-tab="a-trial">Trials</button>
+                        <button class="tab-btn" data-tab="a-water">Water</button>
+                        <button class="tab-btn" data-tab="a-health">Health</button>
+                        <button class="tab-btn" data-tab="a-env">Climate</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="a-germ" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="ag-species" placeholder="Seed Specimen" list="species-list">
+                                <input type="number" id="ag-seeds" placeholder="Seed Density">
+                                <button id="btn-ag-save" class="primary-btn">INITIALIZE</button>
+                            </div>
+                            <div class="chart-container glass"><canvas id="germ-chart"></canvas></div>
+                        </div>
+                        <div id="a-phen" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="ap-name" placeholder="Subject Identifier">
+                                <div class="input-row">
+                                    <input type="number" id="ap-height" placeholder="Height (cm)">
+                                    <input type="number" id="ap-leaves" placeholder="Leaf Index">
+                                </div>
+                                <input type="text" id="ap-stage" placeholder="Phenological Phase">
+                                <button id="btn-ap-save" class="primary-btn">LOG METRICS</button>
+                            </div>
+                        </div>
+                        <div id="a-trial" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="at-name" placeholder="Trial Protocol Name">
+                                <input type="text" id="at-treat" placeholder="Experimental Treatment">
+                                <input type="text" id="at-status" placeholder="Operational Status">
+                                <button id="btn-at-save" class="primary-btn">SYNC STATUS</button>
+                            </div>
+                        </div>
+                        <div id="a-water" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="aw-id" placeholder="Target Zone">
+                                <input type="number" id="aw-vol" placeholder="Volume (Liters)">
+                                <input type="text" id="aw-method" placeholder="Application Method">
+                                <button id="btn-aw-save" class="primary-btn">LOG HYDRATION</button>
+                            </div>
+                        </div>
+                        <div id="a-health" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="ah-id" placeholder="Specimen ID">
+                                <input type="text" id="ah-issue" placeholder="Pathological Observation">
+                                <select id="ah-sev" class="glass-input">
+                                    <option value="Low">Low Threat</option>
+                                    <option value="Medium">Moderate</option>
+                                    <option value="High">Severe Alert</option>
+                                </select>
+                                <button id="btn-ah-save" class="primary-btn">FILE ALERT</button>
+                            </div>
+                        </div>
+                        <div id="a-env" class="tab-pane">
+                            <div class="input-form glass" style="padding: 30px; text-align: center;">
+                                <div class="tel-display">
+                                    <h2 id="ae-temp" style="font-size: 3rem;">--°C</h2>
+                                    <p id="ae-hum" style="letter-spacing: 5px;">--% RH</p>
+                                </div>
+                                <button id="btn-ae-refresh" class="secondary-btn" style="margin-top: 30px;">QUERY SENSORS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GARDEN SCAPE -->
+            <section id="garden-scape" class="content-section sub-tool">
+                <div class="tool-session-bar glass">
+                    <select class="active-survey-select glass-input" style="flex:1; border:none; background: transparent !important;"></select>
+                    <button class="btn-new-survey-tool primary-btn" style="width:auto; padding: 10px 20px; border-radius: 12px;">NEW</button>
+                </div>
+                <div id="garden-menu" class="sub-menu-grid">
+                    <div class="sub-tool-card glass" data-tab="g-plan"><span>📅</span><h4>Schedule</h4></div>
+                    <div class="sub-tool-card glass" data-tab="g-soil"><span>🪱</span><h4>Matrix</h4></div>
+                    <div class="sub-tool-card glass" data-tab="g-task"><span>⚒️</span><h4>Ops</h4></div>
+                    <div class="sub-tool-card glass" data-tab="g-water"><span>🚿</span><h4>Flow</h4></div>
+                    <div class="sub-tool-card glass" data-tab="g-input"><span>🧪</span><h4>Inputs</h4></div>
+                    <div class="sub-tool-card glass" data-tab="g-yield"><span>🧺</span><h4>Output</h4></div>
+                </div>
+                <div id="garden-content" class="sub-content hidden">
+                    <div class="tool-tabs glass">
+                        <button class="tab-btn" data-tab="g-plan">Schedule</button>
+                        <button class="tab-btn" data-tab="g-soil">Matrix</button>
+                        <button class="tab-btn" data-tab="g-task">Ops</button>
+                        <button class="tab-btn" data-tab="g-water">Flow</button>
+                        <button class="tab-btn" data-tab="g-input">Inputs</button>
+                        <button class="tab-btn" data-tab="g-yield">Output</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="g-plan" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="gs-crop" placeholder="Cultivar Name" list="species-list">
+                                <input type="date" id="gs-date">
+                                <button id="btn-gs-save" class="primary-btn">PLAN PHASE</button>
+                            </div>
+                        </div>
+                        <div id="g-soil" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="number" step="0.1" id="gsl-ph" placeholder="Matrix pH">
+                                <input type="number" id="gsl-moist" placeholder="Moisture Content %">
+                                <input type="text" id="gsl-npk" placeholder="NPK Profile">
+                                <button id="btn-gsl-save" class="primary-btn">SYNC MATRIX</button>
+                            </div>
+                        </div>
+                        <div id="g-task" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <select id="gt-type" class="glass-input">
+                                    <option value="Weeding">Extraction</option>
+                                    <option value="Pruning">Structural</option>
+                                    <option value="Mulching">Substrate Cover</option>
+                                    <option value="Transplanting">Relocation</option>
+                                </select>
+                                <input type="text" id="gt-desc" placeholder="Operation Details">
+                                <button id="btn-gt-save" class="primary-btn">LOG OPERATION</button>
+                            </div>
+                        </div>
+                        <div id="g-water" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="gw-zone" placeholder="Target Sector">
+                                <input type="number" id="gw-duration" placeholder="Flow Duration (min)">
+                                <button id="btn-gw-save" class="primary-btn">SYNC FLOW</button>
+                            </div>
+                        </div>
+                        <div id="g-input" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="gi-name" placeholder="Biomass/Chemical Input">
+                                <input type="number" id="gi-qty" placeholder="Quantity Index">
+                                <button id="btn-gi-save" class="primary-btn">LOG INPUT</button>
+                            </div>
+                        </div>
+                        <div id="g-yield" class="tab-pane">
+                            <div class="input-form glass" style="padding: 25px;">
+                                <input type="text" id="gy-crop" placeholder="Harvest Cultivar" list="species-list">
+                                <input type="number" step="0.01" id="gy-weight" placeholder="Mass Index (kg)">
+                                <button id="btn-gy-save" class="primary-btn">LOG OUTPUT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VAULT -->
+            <section id="note-vault" class="content-section sub-tool">
+                <div class="tool-session-bar glass">
+                    <select class="active-survey-select glass-input" style="flex:1; border:none; background: transparent !important;"></select>
+                </div>
+                <div class="glass" style="margin-top: 15px; border-radius: 28px; overflow: hidden;">
+                    <textarea id="nv-text" placeholder="Neural capture initialized..." style="width: 100%; height: 180px; background: transparent; border: none; padding: 25px; outline: none; font-size: 1.1rem;"></textarea>
+                    <div class="note-controls glass" style="padding: 15px; display: flex; gap: 15px; background: rgba(255,255,255,0.02);">
+                        <button id="btn-nv-photo" class="icon-btn glass" style="width: 50px; height: 50px;">📷</button>
+                        <button id="btn-nv-voice" class="icon-btn glass" style="width: 50px; height: 50px;">🎤</button>
+                        <button id="btn-nv-save" class="primary-btn" style="flex: 1;">SYNCHRONIZE NOTE</button>
+                        <input type="file" id="nv-file-input" style="display:none" accept="image/*" capture="camera">
+                    </div>
+                </div>
+                <div id="nv-list" style="margin-top: 25px; display: flex; flex-direction: column; gap: 15px;"></div>
+            </section>
+        </main>
+
+        <!-- FUTURISTIC NAV -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-screen="dashboard">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <span>CORE</span>
+            </button>
+            <button class="nav-item" data-screen="tools">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>MODULES</span>
+            </button>
+            <button class="nav-item" data-screen="data">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>ARCHIVE</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="settings-panel" class="side-panel glass" style="padding: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+            <h2 style="letter-spacing: 2px;">SYSTEM CONFIG</h2>
+            <button id="btn-settings-close" class="icon-btn glass" style="width: 40px; height: 40px;">×</button>
+        </div>
+        <div class="setting-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <span style="font-weight: 700; font-size: 0.9rem;">DARK MATTER MODE</span>
+                <label class="switch"><input type="checkbox" id="pref-theme" checked><span class="slider"></span></label>
+            </div>
+            <button id="btn-data-export" class="secondary-btn" style="margin-bottom: 15px; width: 100%;">CLOUD UPLINK (JSON)</button>
+            <button id="btn-data-import" class="secondary-btn" style="margin-bottom: 15px; width: 100%;">RESTORE STREAM</button>
+            <button id="btn-data-clear" class="danger-btn" style="width: 100%; border: 1px solid var(--danger);">ERASE LOCAL MEMORY</button>
+            <input type="file" id="file-import" style="display: none;" accept=".json">
+        </div>
+    </div>
+
+    <datalist id="species-list"></datalist>
+
+    <script src="app.js"></script>
+</body>
+</html>

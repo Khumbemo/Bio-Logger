@@ -1,0 +1,6 @@
+{
+  "appId": "com.biologger.app",
+  "appName": "Bio Logger",
+  "webDir": "app/src/main/assets/www",
+  "bundledWebRuntime": false
+}
