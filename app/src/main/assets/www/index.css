@@ -441,11 +441,13 @@ label.form-label {
     display: flex;
     padding-bottom: env(safe-area-inset-bottom);
     z-index: 2000;
+    padding: 0 10px;
 }
 .nav-item {
     flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
     color: var(--text-muted); font-weight: 700; font-size: 0.65rem; gap: 6px;
     background: none; border: none; transition: 0.3s;
+    min-width: 60px;
 }
 .nav-item.active { color: var(--primary); }
 .nav-item.active svg { filter: drop-shadow(0 0 8px var(--primary-glow)); transform: translateY(-2px); }

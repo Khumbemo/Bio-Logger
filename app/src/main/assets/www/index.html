@@ -207,7 +207,7 @@
                             <label class="form-label">Plot Parameters</label>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <input type="number" id="q-num" placeholder="Plot #" class="glass-input">
-                                <input type="number" id="q-size" placeholder="Size (m²)" class="glass-input">
+                                <input type="number" id="q-size" placeholder="Size (m²)" class="glass-input" value="100">
                             </div>
                             <select id="q-shape" class="glass-input">
                                 <option value="square">Square</option>
@@ -230,7 +230,18 @@
                             </div>
                             <button class="secondary-btn" id="btn-add-qs">LOG INDIVIDUAL</button>
                         </div>
+
                         <div id="qs-temp-list" style="margin-top:15px"></div>
+
+                        <div id="quad-results-box" class="glass hidden" style="padding: 20px; margin-top: 15px; background: rgba(0,230,118,0.05);">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">REAL-TIME ANALYTICS</h4>
+                            <div id="quad-stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.8rem;">
+                                <div>Diversity (H'): <span id="res-shannon">0.00</span></div>
+                                <div>Simpson's (D): <span id="res-simpson">0.00</span></div>
+                            </div>
+                            <canvas id="chart-ivi" style="margin-top: 15px; max-height: 200px;"></canvas>
+                        </div>
+
                         <button class="primary-btn" id="btn-final-save-quad" style="margin-top:15px">ARCHIVE PLOT DATA</button>
                     </div>
                     <div id="f-tran" class="tab-pane">
@@ -240,7 +251,19 @@
                                 <input type="number" id="t-len" placeholder="Length (m)" class="glass-input">
                                 <input type="number" id="t-bearing" placeholder="Bearing (°)" class="glass-input">
                             </div>
-                            <button class="primary-btn">INITIALIZE TRANSECT</button>
+                            <button class="primary-btn" id="btn-init-transect">INITIALIZE TRANSECT</button>
+                        </div>
+                        <div id="transect-work-area" class="hidden" style="margin-top: 15px;">
+                            <div class="glass" style="padding: 20px;">
+                                <label class="form-label">Point Sampling</label>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                    <input type="number" id="ts-dist" placeholder="Dist. on Line (m)" class="glass-input">
+                                    <input type="text" id="ts-species" placeholder="Species" class="glass-input" list="species-list">
+                                </div>
+                                <button class="secondary-btn" id="btn-add-ts">LOG POINT</button>
+                            </div>
+                            <div id="ts-temp-list" style="margin-top:10px"></div>
+                            <button class="primary-btn" id="btn-save-transect-final" style="margin-top:15px">CLOSE TRANSECT</button>
                         </div>
                     </div>
                     <div id="f-env" class="tab-pane">
@@ -257,24 +280,31 @@
                     </div>
                     <div id="f-cbi" class="tab-pane">
                         <div class="glass" style="padding: 20px;">
-                            <h4 style="font-size: 0.8rem; color: var(--primary); margin-bottom: 15px;">STRATA CBI SCORING (0-3)</h4>
+                            <h4 style="font-size: 0.8rem; color: var(--primary); margin-bottom: 15px;">SCIENTIFIC CBI SCORING (0-3)</h4>
                             <div class="cbi-input-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                                <div><small>Substrate</small><input type="number" step="0.1" class="cbi-score glass-input"></div>
-                                <div><small>Overstory</small><input type="number" step="0.1" class="cbi-score glass-input"></div>
+                                <div><small>Ground Cover</small><input type="number" step="0.1" max="3" min="0" class="cbi-score glass-input" data-strata="ground"></div>
+                                <div><small>Understory</small><input type="number" step="0.1" max="3" min="0" class="cbi-score glass-input" data-strata="understory"></div>
+                                <div><small>Canopy</small><input type="number" step="0.1" max="3" min="0" class="cbi-score glass-input" data-strata="canopy"></div>
                             </div>
                             <div class="glass" style="padding: 15px; text-align: center; margin-top: 15px;">
-                                <small>COMPOSITE INDEX</small>
+                                <small>COMPOSITE BURN INDEX</small>
                                 <div id="cbi-res" style="font-size: 2.2rem; font-weight: 900; color: var(--primary);">0.00</div>
+                                <div id="cbi-severity" style="font-size: 0.7rem; opacity: 0.7;">UNBURNED</div>
                             </div>
-                            <button class="primary-btn">SAVE CBI REPORT</button>
+                            <button class="primary-btn" id="btn-save-cbi">ARCHIVE CBI ANALYSIS</button>
                         </div>
                     </div>
                     <div id="f-herb" class="tab-pane">
                         <div class="glass" style="padding: 20px;">
                             <h4 id="herb-id-box" style="font-family: monospace; opacity: 0.6; margin-bottom: 10px;">SPECIMEN ID: ---</h4>
-                            <input type="text" id="h-binomial" placeholder="Binomial Nomenclature" class="glass-input">
-                            <button class="secondary-btn" style="margin-bottom: 15px;">📸 Capture Specimen Photo</button>
-                            <button class="primary-btn">ARCHIVE VOUCHER</button>
+                            <input type="text" id="h-binomial" placeholder="Binomial Nomenclature" class="glass-input" list="species-list">
+                            <input type="text" id="h-family" placeholder="Family" class="glass-input">
+                            <textarea id="h-notes" placeholder="Morphological notes..." class="glass-input" style="height: 80px;"></textarea>
+                            <div id="herb-photo-preview" class="glass hidden" style="height: 150px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; background: #000;">
+                                <span style="font-size: 2rem;">🌿</span>
+                            </div>
+                            <button class="secondary-btn" id="btn-herb-photo" style="margin-bottom: 15px;">📸 Capture Specimen Photo</button>
+                            <button class="primary-btn" id="btn-save-herb">ARCHIVE VOUCHER</button>
                         </div>
                     </div>
                 </div>
@@ -331,12 +361,67 @@
                     <div id="a-germ" class="tab-pane active">
                         <div class="glass" style="padding: 20px;">
                             <label class="form-label">Germination Parameters</label>
-                            <input type="text" id="ag-seed-type" placeholder="Seed Identification" class="glass-input">
+                            <input type="text" id="ag-seed-type" placeholder="Seed Identification" class="glass-input" list="species-list">
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <input type="number" id="ag-seed-count" placeholder="Total Seeds" class="glass-input">
-                                <input type="number" id="ag-germ-count" placeholder="Germinated" class="glass-input">
+                                <input type="number" id="ag-start-date" placeholder="Start Day" class="glass-input" type="number">
                             </div>
-                            <button class="primary-btn">CALCULATE RATE & SAVE</button>
+                            <div id="germ-daily-entry" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" id="ag-day-n" placeholder="Day #" class="glass-input">
+                                <input type="number" id="ag-count-n" placeholder="New Germs" class="glass-input">
+                            </div>
+                            <button class="secondary-btn" id="btn-add-germ-day" style="margin-bottom:10px">LOG DAILY COUNT</button>
+                            <div id="germ-temp-list" style="margin-bottom:15px"></div>
+
+                            <div id="germ-results-box" class="glass hidden" style="padding: 15px; background: rgba(0, 176, 255, 0.05); margin-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <small>RATE: <span id="res-germ-rate">0%</span></small>
+                                    <small>MGT: <span id="res-germ-mgt">0</span> days</small>
+                                </div>
+                                <canvas id="chart-germ" style="margin-top:10px; max-height: 150px;"></canvas>
+                            </div>
+
+                            <button class="primary-btn" id="btn-save-germ-final">ARCHIVE EXPERIMENT</button>
+                        </div>
+                    </div>
+                    <div id="a-growth" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">Growth Tracking</label>
+                            <input type="text" id="agro-sample-id" placeholder="Sample ID (e.g. Pot A1)" class="glass-input">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" id="agro-height" placeholder="Height (cm)" class="glass-input">
+                                <input type="number" id="agro-leaves" placeholder="Leaf Count" class="glass-input">
+                            </div>
+                            <button class="primary-btn" id="btn-save-growth">LOG GROWTH METRIC</button>
+                        </div>
+                    </div>
+                    <div id="a-env" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">Abiotic Factors</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" id="ae-co2" placeholder="CO₂ (ppm)" class="glass-input">
+                                <input type="number" id="ae-lux" placeholder="Light (Lux)" class="glass-input">
+                            </div>
+                            <input type="number" id="ae-soil-moist" placeholder="Soil Moisture %" class="glass-input">
+                            <button class="primary-btn" id="btn-save-agro-env">SYNC ENVIRONMENTAL LOG</button>
+                        </div>
+                    </div>
+                    <div id="a-compare" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">Treatment Comparison</label>
+                            <select id="ac-comp-metric" class="glass-input">
+                                <option value="height">Plant Height</option>
+                                <option value="leaves">Leaf Count</option>
+                                <option value="germ">Germination Rate</option>
+                            </select>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="text" id="ac-t1" placeholder="Treatment 1 (ID)" class="glass-input">
+                                <input type="text" id="ac-t2" placeholder="Treatment 2 (ID)" class="glass-input">
+                            </div>
+                            <button class="primary-btn" id="btn-agro-compare">GENERATE COMPARISON</button>
+                            <div id="agro-compare-results" class="glass hidden" style="margin-top:15px; padding:15px;">
+                                <canvas id="chart-agro-compare"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -403,9 +488,72 @@
                     <div id="g-map" class="tab-pane active">
                         <div class="glass" style="padding: 20px;">
                             <label class="form-label">Field Dimension</label>
-                            <input type="number" placeholder="Length (m)" class="glass-input">
-                            <input type="number" placeholder="Width (m)" class="glass-input">
-                            <button class="primary-btn">CALCULATE LAND MATRIX</button>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" id="gm-len" placeholder="Length (m)" class="glass-input">
+                                <input type="number" id="gm-wid" placeholder="Width (m)" class="glass-input">
+                            </div>
+                            <button class="primary-btn" id="btn-gm-calc">CALCULATE LAND MATRIX</button>
+                            <div id="gm-res" class="glass hidden" style="margin-top:15px; padding:15px; text-align:center;">
+                                <small>TOTAL AREA</small>
+                                <div id="gm-area" style="font-size:1.8rem; font-weight:800; color:var(--primary);">0 m²</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="g-yield" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">Yield Prediction</label>
+                            <input type="text" id="gy-crop" placeholder="Crop Name" class="glass-input" list="species-list">
+                            <input type="number" id="gy-area" placeholder="Plot Area (m²)" class="glass-input">
+                            <input type="number" id="gy-const" placeholder="Yield Constant (kg/m²)" class="glass-input">
+                            <button class="primary-btn" id="btn-gy-calc">ESTIMATE OUTPUT</button>
+                            <div id="gy-res-box" class="glass hidden" style="margin-top:15px; padding:15px; text-align:center;">
+                                <small>ESTIMATED YIELD</small>
+                                <div id="gy-val" style="font-size:1.8rem; font-weight:800; color:var(--primary);">0 kg</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="g-rotation" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">4-Year Rotation Guide</label>
+                            <select id="gr-year" class="glass-input">
+                                <option value="1">Year 1 (Legumes)</option>
+                                <option value="2">Year 2 (Brassicas)</option>
+                                <option value="3">Year 3 (Alliums)</option>
+                                <option value="4">Year 4 (Solanaceous)</option>
+                            </select>
+                            <div class="glass" style="padding:15px; background:rgba(213, 0, 249, 0.05);">
+                                <small>RECOMMENDED CROP GROUPS:</small>
+                                <p id="gr-hint" style="font-size:0.8rem; margin-top:5px; font-weight:700;">---</p>
+                            </div>
+                            <button class="primary-btn" id="btn-gr-save" style="margin-top:15px">LOG ROTATION STAGE</button>
+                        </div>
+                    </div>
+                    <div id="g-layout" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">Spacing Optimizer</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" id="gl-row" placeholder="Row Spacing (cm)" class="glass-input">
+                                <input type="number" id="gl-plant" placeholder="Plant Spacing (cm)" class="glass-input">
+                            </div>
+                            <input type="number" id="gl-area" placeholder="Target Area (m²)" class="glass-input">
+                            <button class="primary-btn" id="btn-gl-calc">CALCULATE CAPACITY</button>
+                            <div id="gl-res-box" class="glass hidden" style="margin-top:15px; padding:15px; text-align:center;">
+                                <small>MAXIMUM INDIVIDUALS</small>
+                                <div id="gl-val" style="font-size:1.8rem; font-weight:800; color:var(--primary);">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="g-soil" class="tab-pane">
+                        <div class="glass" style="padding: 20px;">
+                            <label class="form-label">Soil Condition Log</label>
+                            <input type="number" step="0.1" id="gs-ph" placeholder="Soil pH" class="glass-input">
+                            <select id="gs-texture" class="glass-input">
+                                <option value="sandy">Sandy</option>
+                                <option value="loamy">Loamy</option>
+                                <option value="clayey">Clayey</option>
+                                <option value="silty">Silty</option>
+                            </select>
+                            <button class="primary-btn" id="btn-gs-save">COMMIT SOIL PROFILE</button>
                         </div>
                     </div>
                 </div>
@@ -416,6 +564,29 @@
                     <textarea id="nv-text" placeholder="Neural capture initialized..." style="width: 100%; height: 200px; background: transparent; border: none; padding: 25px; outline: none; font-size: 1.1rem; color: #fff;"></textarea>
                     <div style="padding: 15px;"><button id="btn-nv-save" class="primary-btn">SYNC OBSERVATION</button></div>
                 </div>
+            </section>
+
+            <section id="data" class="content-section">
+                <h2 style="font-weight: 900; letter-spacing: 2px; margin-bottom: 20px; text-align: center;">RESEARCH ARCHIVE</h2>
+                <div class="glass" style="padding: 15px; margin-bottom: 20px;">
+                    <select id="data-filter-tool" class="glass-input" style="margin-bottom: 0;">
+                        <option value="all">ALL MODULES</option>
+                        <option value="forest">FOREST CAPTURE</option>
+                        <option value="agro">AGRO LAB</option>
+                        <option value="garden">GARDEN SCAPE</option>
+                        <option value="note">NOTE VAULT</option>
+                    </select>
+                </div>
+                <div id="unified-data-list"></div>
+
+                <div id="analytics-overview" class="glass" style="margin-top: 20px; padding: 20px;">
+                    <h4 style="font-size: 0.8rem; color: var(--primary); margin-bottom: 10px;">EXPEDITION STATS</h4>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Total Records:</span>
+                        <span id="stat-total-count" style="font-weight: 800;">0</span>
+                    </div>
+                </div>
+                <button id="btn-export-xlsx" class="secondary-btn" style="margin-top: 15px;">📊 EXPORT TO EXCEL (XLSX)</button>
             </section>
         </main>
 
@@ -431,6 +602,10 @@
             <button class="nav-item" data-screen="data">
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2 2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span>DATA</span>
+            </button>
+            <button id="btn-back-global" class="nav-item hidden">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <span>BACK</span>
             </button>
         </nav>
     </div>
