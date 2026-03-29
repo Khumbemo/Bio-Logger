@@ -1,166 +1,134 @@
 package com.biologger
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.speech.RecognizerIntent
-import android.webkit.ValueCallback
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import android.webkit.WebChromeClient
-import android.webkit.PermissionRequest
-import android.webkit.JavascriptInterface
-import android.webkit.GeolocationPermissions
-import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.result.contract.ActivityResultContracts
-import java.util.Locale
+import android.view.View
+import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : ComponentActivity() {
-    private lateinit var webView: WebView
-    private var filePathCallback: ValueCallback<Array<Uri>>? = null
-    private var backPressedTime: Long = 0
+class MainActivity : AppCompatActivity() {
 
-    private val fileChooserLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val data: Intent? = result.data
-            val results = WebChromeClient.FileChooserParams.parseResult(result.resultCode, data)
-            filePathCallback?.onReceiveValue(results)
-        } else {
-            filePathCallback?.onReceiveValue(null)
-        }
-        filePathCallback = null
-    }
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private var backPressedTime = 0L
 
-    private val speechLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val data: Intent? = result.data
-            val spokenText: String? =
-                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.let { results ->
-                    results[0]
-                }
-            spokenText?.let {
-                val escapedText = it.replace("'", "\\'")
-                webView.evaluateJavascript("onVoiceResult('$escapedText')", null)
-            }
-        }
-    }
-
-    private val requestPermissionsLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { _ ->
-        // Permissions handled
-    }
-
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        requestPermissionsLauncher.launch(arrayOf(
-            android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.RECORD_AUDIO
-        ))
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.statusBarColor = Color.TRANSPARENT
+        window.navigationBarColor = Color.TRANSPARENT
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isNavigationBarContrastEnforced = false
+        }
 
-        webView = WebView(this)
-        
-        webView.webViewClient = WebViewClient()
-        webView.webChromeClient = object : WebChromeClient() {
-            override fun onPermissionRequest(request: PermissionRequest) {
-                request.grant(request.resources)
-            }
+        setContentView(R.layout.activity_main)
 
-            override fun onGeolocationPermissionsShowPrompt(
-                origin: String?,
-                callback: GeolocationPermissions.Callback?
-            ) {
-                callback?.invoke(origin, true, false)
-            }
+        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-            override fun onShowFileChooser(
-                webView: WebView?,
-                filePathCallback: ValueCallback<Array<Uri>>?,
-                fileChooserParams: FileChooserParams?
-            ): Boolean {
-                this@MainActivity.filePathCallback = filePathCallback
-                val intent = fileChooserParams?.createIntent()
-                if (intent != null) {
-                    fileChooserLauncher.launch(intent)
-                    return true
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
+
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.mainDashboardFragment,
+                R.id.forestHomeFragment,
+                R.id.greenhouseHomeFragment,
+                R.id.gardenHomeFragment,
+                R.id.noteVaultHomeFragment
+            )
+        )
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        bottomNav.setupWithNavController(navController)
+
+        ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, insets ->
+            val top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            view.setPadding(0, top, 0, 0)
+            insets
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNav) { view, insets ->
+            val bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            view.setPadding(0, 0, 0, bottom)
+            insets
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.mainDashboardFragment -> {
+                    bottomNav.visibility = View.VISIBLE
+                    toolbar.setBackgroundColor(Color.TRANSPARENT)
+                    toolbar.title = ""
+                    toolbar.navigationIcon = null
                 }
-                return false
+                R.id.forestHomeFragment -> {
+                    bottomNav.visibility = View.VISIBLE
+                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.forest_green))
+                    toolbar.title = "Forest Capture"
+                }
+                R.id.greenhouseHomeFragment -> {
+                    bottomNav.visibility = View.VISIBLE
+                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.greenhouse_teal))
+                    toolbar.title = "AgroClimatic Lab"
+                }
+                R.id.gardenHomeFragment -> {
+                    bottomNav.visibility = View.VISIBLE
+                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.garden_amber))
+                    toolbar.title = "Garden Scape"
+                }
+                R.id.noteVaultHomeFragment -> {
+                    bottomNav.visibility = View.VISIBLE
+                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.vault_purple))
+                    toolbar.title = "Note Vault"
+                }
+                else -> {
+                    bottomNav.visibility = View.GONE
+                    toolbar.setBackgroundColor(Color.WHITE)
+                    toolbar.title = destination.label ?: ""
+                }
             }
         }
-        
-        webView.settings.apply {
-            javaScriptEnabled = true
-            domStorageEnabled = true
-            allowFileAccess = true
-            allowContentAccess = true
-            loadWithOverviewMode = true
-            useWideViewPort = true
-            setGeolocationEnabled(true)
 
-            @Suppress("DEPRECATION")
-            databaseEnabled = true
-            @Suppress("DEPRECATION")
-            allowFileAccessFromFileURLs = true
-            @Suppress("DEPRECATION")
-            allowUniversalAccessFromFileURLs = true
-            @Suppress("DEPRECATION")
-            mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-        }
-
-        // Add Bridge
-        webView.addJavascriptInterface(WebAppInterface(), "Android")
-
-        setContentView(webView)
-        webView.loadUrl("file:///android_asset/www/index.html")
-
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // Tell JS to handle back. JS will call Android.exitApp() if it's on home screen.
-                webView.evaluateJavascript("handleBackAction()", null)
-            }
-        })
-    }
-
-    inner class WebAppInterface {
-        @JavascriptInterface
-        fun exitApp() {
-            runOnUiThread {
-                if (backPressedTime + 2000 > System.currentTimeMillis()) {
+        onBackPressedDispatcher.addCallback(this) {
+            if (navController.currentDestination?.id == R.id.mainDashboardFragment) {
+                val now = System.currentTimeMillis()
+                if (now - backPressedTime < 2000) {
                     finish()
                 } else {
-                    Toast.makeText(this@MainActivity, "Press back again to exit", Toast.LENGTH_SHORT).show()
-                    backPressedTime = System.currentTimeMillis()
+                    backPressedTime = now
+                    Snackbar.make(findViewById(android.R.id.content), "Press back again to exit", Snackbar.LENGTH_SHORT)
+                        .setAnchorView(bottomNav)
+                        .show()
                 }
+            } else {
+                isEnabled = false
+                onBackPressedDispatcher.onBackPressed()
+                isEnabled = true
             }
         }
+    }
 
-        @JavascriptInterface
-        fun showToast(message: String) {
-            runOnUiThread {
-                Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        @JavascriptInterface
-        fun startVoiceRecognition() {
-            runOnUiThread {
-                try {
-                    val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-                        putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-                        putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-                        putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak your note...")
-                    }
-                    speechLauncher.launch(intent)
-                } catch (e: Exception) {
-                    Toast.makeText(this@MainActivity, "Voice search not supported", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
