@@ -283,7 +283,7 @@ function initForestTools() {
 
     setupListener('btn-save-new-surv', 'click', () => {
         const name = document.getElementById('surv-name').value;
-        if (!name) return alert("Enter Survey Title.");
+        if (!name) return showSyncToast("Enter Survey Title.");
         const survey = {
             id: Date.now(),
             name,
@@ -296,7 +296,7 @@ function initForestTools() {
         state.activeSurveyId = survey.id;
         saveData();
         updateSurveyUI();
-        alert("Expedition Initialized.");
+        showSyncToast("Expedition Initialized.");
         document.getElementById('forest-content').classList.add('hidden');
         document.getElementById('forest-menu').classList.remove('hidden');
     });
@@ -320,7 +320,7 @@ function initForestTools() {
     setupListener('btn-autofill-env', 'click', () => {
         document.getElementById('e-weather-temp').value = state.lastTelemetry.temp + "°C";
         document.getElementById('e-weather-hum').value = state.lastTelemetry.hum + "%";
-        alert("Environmental Matrix Synced.");
+        showSyncToast("Environmental Matrix Synced.");
     });
 
     // Quadrat Logic
@@ -328,7 +328,7 @@ function initForestTools() {
         const name = document.getElementById('qs-name').value;
         const count = parseInt(document.getElementById('qs-abundance').value) || 0;
         const dbh = parseFloat(document.getElementById('qs-dbh').value) || 0;
-        if (!name || count <= 0) return alert("Enter species name and count.");
+        if (!name || count <= 0) return showSyncToast("Enter species name and count.");
 
         tempSpeciesEntries.push({
             name,
@@ -348,7 +348,7 @@ function initForestTools() {
     });
 
     setupListener('btn-final-save-quad', 'click', () => {
-        if (tempSpeciesEntries.length === 0) return alert("No data to save.");
+        if (tempSpeciesEntries.length === 0) return showSyncToast("No data to save.");
         saveForestData('Quadrat Plot', {
             plot: document.getElementById('q-num').value,
             size: document.getElementById('q-size').value,
@@ -398,7 +398,7 @@ function initForestTools() {
     // Herbarium
     setupListener('btn-save-herb', 'click', () => {
         const binomial = document.getElementById('h-binomial').value;
-        if (!binomial) return alert("Enter Binomial Name.");
+        if (!binomial) return showSyncToast("Enter Binomial Name.");
         saveForestData('Herbarium Voucher', {
             binomial,
             family: document.getElementById('h-family').value,
@@ -412,7 +412,7 @@ function initForestTools() {
 
     setupListener('btn-herb-photo', 'click', () => {
         document.getElementById('herb-photo-preview').classList.remove('hidden');
-        alert("Camera initialized (Simulated)");
+        showSyncToast("Camera initialized (Simulated)");
     });
 }
 
@@ -581,7 +581,7 @@ function saveForestData(type, data) {
     };
     state.entries.unshift(entry);
     saveData();
-    alert("Field Data Synchronized.");
+    showSyncToast("Field Data Synchronized.");
     document.getElementById('forest-content').classList.add('hidden');
     document.getElementById('forest-menu').classList.remove('hidden');
 }
@@ -646,6 +646,22 @@ function initGardenTools() {
 }
 
 function initNoteVault() {
+    setupListener('btn-nv-voice', 'click', () => {
+        if (typeof Android !== 'undefined' && Android.startVoiceRecognition) {
+            Android.startVoiceRecognition();
+        } else {
+            showSyncToast("Voice recognition only supported in Android app mode.");
+        }
+    });
+
+    window.onVoiceResult = (text) => {
+        const area = document.getElementById('nv-text');
+        if (area) {
+            const current = area.value;
+            area.value = current ? current + " " + text : text;
+        }
+    };
+
     setupListener('btn-nv-save', 'click', () => {
         const text = document.getElementById('nv-text').value;
         if (!text) return;
@@ -659,7 +675,7 @@ function initNoteVault() {
         state.entries.unshift(entry);
         saveData();
         document.getElementById('nv-text').value = '';
-        alert("Observation Synchronized.");
+        showSyncToast("Observation Synchronized.");
     });
 }
 
@@ -673,14 +689,22 @@ function saveGardenData(type, data) {
     };
     state.entries.unshift(entry);
     saveData();
-    alert("Garden Matrix Synchronized.");
+    showSyncToast("Garden Matrix Synchronized.");
+}
+
+function showSyncToast(msg) {
+    if (typeof Android !== 'undefined' && Android.showToast) {
+        Android.showToast(msg);
+    } else {
+        alert(msg);
+    }
 }
 
 function initAgroTools() {
     setupListener('btn-add-germ-day', 'click', () => {
         const day = parseInt(document.getElementById('ag-day-n').value);
         const count = parseInt(document.getElementById('ag-count-n').value);
-        if (isNaN(day) || isNaN(count)) return alert("Invalid data.");
+        if (isNaN(day) || isNaN(count)) return showSyncToast("Invalid data.");
         tempGermEntries.push({ day, count });
         tempGermEntries.sort((a,b) => a.day - b.day);
         renderTempGerm();
@@ -688,7 +712,7 @@ function initAgroTools() {
     });
 
     setupListener('btn-save-germ-final', 'click', () => {
-        if (tempGermEntries.length === 0) return alert("No data to save.");
+        if (tempGermEntries.length === 0) return showSyncToast("No data to save.");
         saveAgroData('Germination Study', {
             seed: document.getElementById('ag-seed-type').value,
             total: document.getElementById('ag-seed-count').value,
@@ -704,7 +728,7 @@ function initAgroTools() {
         const sample = document.getElementById('agro-sample-id').value;
         const h = document.getElementById('agro-height').value;
         const l = document.getElementById('agro-leaves').value;
-        if (!sample) return alert("Enter Sample ID.");
+        if (!sample) return showSyncToast("Enter Sample ID.");
         saveAgroData('Growth Metrics', { sample, height: h, leaves: l });
     });
 
@@ -720,7 +744,7 @@ function initAgroTools() {
         const t1 = document.getElementById('ac-t1').value;
         const t2 = document.getElementById('ac-t2').value;
         const metric = document.getElementById('ac-comp-metric').value;
-        if (!t1 || !t2) return alert("Enter Treatment IDs.");
+        if (!t1 || !t2) return showSyncToast("Enter Treatment IDs.");
 
         const data1 = state.entries.filter(e => e.module === 'agro' && (e.data.sample === t1 || (e.data.seed === t1))).map(e => parseFloat(e.data[metric] || (e.data.stats ? e.data.stats.rate : 0)));
         const data2 = state.entries.filter(e => e.module === 'agro' && (e.data.sample === t2 || (e.data.seed === t2))).map(e => parseFloat(e.data[metric] || (e.data.stats ? e.data.stats.rate : 0)));
@@ -829,7 +853,7 @@ function saveAgroData(type, data) {
     };
     state.entries.unshift(entry);
     saveData();
-    alert("Lab Data Synchronized.");
+    showSyncToast("Lab Data Synchronized.");
 }
 
 function initForms() {
@@ -936,7 +960,7 @@ function applyTheme() {
 
 function applyBrightness() { document.body.style.filter = `brightness(${state.settings.brightness}%)`; }
 function exportToXLSX() {
-    if (state.entries.length === 0) return alert("No data to export.");
+    if (state.entries.length === 0) return showSyncToast("No data to export.");
     const flatData = state.entries.map(e => {
         const row = {
             Timestamp: e.timestamp,
