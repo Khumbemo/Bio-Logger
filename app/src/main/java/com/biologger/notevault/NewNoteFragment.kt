@@ -4,6 +4,10 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+<<<<<<< HEAD
+import android.graphics.Color
+=======
+>>>>>>> master
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
@@ -12,8 +16,15 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EdgeEffect
+=======
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+>>>>>>> master
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
@@ -22,6 +33,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+<<<<<<< HEAD
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+=======
+>>>>>>> master
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -92,6 +108,14 @@ class NewNoteFragment : Fragment() {
         // Setup Photo RecyclerView
         photoAdapter = PhotoUriAdapter(photoUris)
         recyclerPhotos.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+<<<<<<< HEAD
+        recyclerPhotos.edgeEffectFactory = object : RecyclerView.EdgeEffectFactory() {
+            override fun createEdgeEffect(view: RecyclerView, direction: Int) = EdgeEffect(view.context).apply {
+                color = Color.TRANSPARENT
+            }
+        }
+=======
+>>>>>>> master
         recyclerPhotos.adapter = photoAdapter
 
         val modules = arrayOf("Unlinked", "Forest", "Greenhouse", "Garden")
@@ -161,6 +185,21 @@ class NewNoteFragment : Fragment() {
         // Auto-fetch location on start
         checkLocationPermissionAndFetch()
 
+<<<<<<< HEAD
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            val navHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            v.setPadding(0, 0, 0, maxOf(imeHeight, navHeight))
+            insets
+        }
+
+        view.setOnClickListener {
+            val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+
+=======
+>>>>>>> master
         return view
     }
 

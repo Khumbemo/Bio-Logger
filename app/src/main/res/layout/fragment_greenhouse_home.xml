@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:fillViewport="true">
+=======
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+>>>>>>> master
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
@@ -11,7 +21,11 @@
         app:columnCount="2">
 
         <!-- Pot Experiment -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardPotExperiment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,7 +39,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Pot Logger -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardPotLogger"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,7 +57,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Climate Log -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardClimateLog"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -53,7 +75,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Germination Tracker -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardGerminationTracker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -67,7 +93,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Fertilizer Calculator -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardFertilizerCalculator"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -81,7 +111,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Irrigation Scheduler -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardIrrigationScheduler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,7 +129,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Pest and Disease -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardPestDisease"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -109,7 +147,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Harvest Recorder -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardHarvestRecorder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -123,7 +165,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Growth Rate Analyzer -->
+<<<<<<< HEAD
+        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
         <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardGrowthRate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -137,4 +183,8 @@
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.gridlayout.widget.GridLayout>
+<<<<<<< HEAD
+</androidx.core.widget.NestedScrollView>
+=======
 </ScrollView>
+>>>>>>> master

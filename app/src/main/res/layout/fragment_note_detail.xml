@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<androidx.core.widget.NestedScrollView android:overScrollMode="never" android:scrollbars="none" android:fillViewport="true" xmlns:android="http://schemas.android.com/apk/res/android"
+=======
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> master
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -71,7 +75,11 @@
             android:text="Photo Gallery"
             android:textStyle="bold" />
 
+<<<<<<< HEAD
+        <androidx.recyclerview.widget.RecyclerView android:overScrollMode="never" android:scrollbars="none"
+=======
         <androidx.recyclerview.widget.RecyclerView
+>>>>>>> master
             android:id="@+id/recyclerDetailPhotos"
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -118,4 +126,8 @@
             android:textColor="@android:color/holo_red_dark" />
 
     </LinearLayout>
+<<<<<<< HEAD
+</androidx.core.widget.NestedScrollView>
+=======
 </ScrollView>
+>>>>>>> master

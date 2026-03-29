@@ -45,6 +45,11 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
     implementation("com.google.android.material:material:1.11.0")
+<<<<<<< HEAD
+    implementation("androidx.interpolator:interpolator:1.0.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
+=======
+>>>>>>> master
     implementation("androidx.camera:camera-core:1.3.1")
     implementation("androidx.camera:camera-camera2:1.3.1")
     implementation("androidx.camera:camera-lifecycle:1.3.1")
