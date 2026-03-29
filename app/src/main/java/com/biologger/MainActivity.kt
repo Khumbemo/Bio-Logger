@@ -48,13 +48,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.mainDashboardFragment,
-                R.id.forestHomeFragment,
-                R.id.greenhouseHomeFragment,
-                R.id.gardenHomeFragment,
-                R.id.noteVaultHomeFragment
-            )
+            setOf(R.id.mainDashboardFragment)
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -82,27 +76,27 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.forestHomeFragment -> {
                     bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.forest_green))
+                    toolbar.setBackgroundResource(R.color.forest_green)
                     toolbar.title = "Forest Capture"
                 }
                 R.id.greenhouseHomeFragment -> {
                     bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.greenhouse_teal))
+                    toolbar.setBackgroundResource(R.color.greenhouse_teal)
                     toolbar.title = "AgroClimatic Lab"
                 }
                 R.id.gardenHomeFragment -> {
                     bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.garden_amber))
+                    toolbar.setBackgroundResource(R.color.garden_amber)
                     toolbar.title = "Garden Scape"
                 }
                 R.id.noteVaultHomeFragment -> {
                     bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.vault_purple))
+                    toolbar.setBackgroundResource(R.color.vault_purple)
                     toolbar.title = "Note Vault"
                 }
                 else -> {
                     bottomNav.visibility = View.GONE
-                    toolbar.setBackgroundColor(Color.WHITE)
+                    toolbar.setBackgroundResource(R.color.white)
                     toolbar.title = destination.label ?: ""
                 }
             }
