@@ -1,17 +1,25 @@
 package com.biologger.forest
 
+<<<<<<< HEAD
 import android.content.Context
+=======
+>>>>>>> master
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+=======
+import android.widget.TextView
+import android.widget.Toast
+>>>>>>> master
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -103,6 +111,7 @@ class TreeMeasurementFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+<<<<<<< HEAD
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
             val navHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
@@ -115,6 +124,8 @@ class TreeMeasurementFragment : Fragment() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
 
+=======
+>>>>>>> master
         return view
     }
 }

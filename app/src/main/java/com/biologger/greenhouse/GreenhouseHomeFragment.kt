@@ -1,5 +1,6 @@
 package com.biologger.greenhouse
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,15 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.fragment.findNavController
 import com.biologger.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+=======
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.biologger.R
+>>>>>>> master
 import com.google.android.material.card.MaterialCardView
 
 class GreenhouseHomeFragment : Fragment() {
@@ -22,6 +32,7 @@ class GreenhouseHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_greenhouse_home, container, false)
 
+<<<<<<< HEAD
         val cards = listOf(
             R.id.cardPotExperiment to R.id.action_greenhouseHomeFragment_to_potExperimentFragment,
             R.id.cardPotLogger to R.id.action_greenhouseHomeFragment_to_potExperimentLoggerFragment,
@@ -94,4 +105,36 @@ class GreenhouseHomeFragment : Fragment() {
             false
         }
     }
+=======
+        view.findViewById<MaterialCardView>(R.id.cardPotExperiment).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_potExperimentFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardPotLogger).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_potExperimentLoggerFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardClimateLog).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_climateLogFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardGerminationTracker).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_germinationTrackerFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardFertilizerCalculator).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_fertilizerCalculatorFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardIrrigationScheduler).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_irrigationSchedulerFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardPestDisease).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_pestDiseaseLogFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardHarvestRecorder).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_harvestRecorderFragment)
+        }
+        view.findViewById<MaterialCardView>(R.id.cardGrowthRate).setOnClickListener {
+            findNavController().navigate(R.id.action_greenhouseHomeFragment_to_growthRateFragment)
+        }
+
+        return view
+    }
+>>>>>>> master
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,6 +7,12 @@
     android:overScrollMode="never"
     android:scrollbars="none"
     android:fillViewport="true">
+=======
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+>>>>>>> master
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,10 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="8dp"
+<<<<<<< HEAD
             app:cardElevation="2dp"
             android:foreground="@drawable/ripple_card"
             android:clickable="true"
             android:focusable="true">
+=======
+            app:cardElevation="2dp">
+>>>>>>> master
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,10 +89,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="8dp"
+<<<<<<< HEAD
             app:cardElevation="2dp"
             android:foreground="@drawable/ripple_card"
             android:clickable="true"
             android:focusable="true">
+=======
+            app:cardElevation="2dp">
+>>>>>>> master
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -122,10 +137,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="8dp"
+<<<<<<< HEAD
             app:cardElevation="2dp"
             android:foreground="@drawable/ripple_card"
             android:clickable="true"
             android:focusable="true">
+=======
+            app:cardElevation="2dp">
+>>>>>>> master
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -167,10 +186,14 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
+<<<<<<< HEAD
             app:cardElevation="2dp"
             android:foreground="@drawable/ripple_card"
             android:clickable="true"
             android:focusable="true">
+=======
+            app:cardElevation="2dp">
+>>>>>>> master
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -205,4 +228,8 @@
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
+<<<<<<< HEAD
 </androidx.core.widget.NestedScrollView>
+=======
+</ScrollView>
+>>>>>>> master

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,6 +7,12 @@
     android:overScrollMode="never"
     android:scrollbars="none"
     android:fillViewport="true">
+=======
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+>>>>>>> master
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
@@ -14,7 +21,11 @@
         app:columnCount="2">
 
         <!-- Tree Measurement -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardTreeMeasurement"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,7 +39,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Basal Area -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardBasalArea"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,7 +57,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Stand Density -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardStandDensity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,7 +75,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Timber Volume -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardTimberVolume"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -70,7 +93,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Biomass Estimator -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardBiomass"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -84,7 +111,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Tree Health Log -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardTreeHealth"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -98,7 +129,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Crown Cover -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardCrownCover"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -112,7 +147,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Litterfall Log -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardLitterfall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -126,7 +165,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Quadrat Studies -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardQuadratStudies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -140,7 +183,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Transect Studies -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardTransectStudies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -154,7 +201,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- GPS and Mapping -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardGpsAndMapping"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -168,7 +219,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Environmental Variables -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardEnvironmentalVariables"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -182,7 +237,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Disturbance Index -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardDisturbanceIndex"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -196,7 +255,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Digital Herbarium -->
+<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+=======
+        <com.google.android.material.card.MaterialCardView
+>>>>>>> master
             android:id="@+id/cardDigitalHerbarium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -210,4 +273,8 @@
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.gridlayout.widget.GridLayout>
+<<<<<<< HEAD
 </androidx.core.widget.NestedScrollView>
+=======
+</ScrollView>
+>>>>>>> master
