@@ -88,13 +88,6 @@ function initNavigation() {
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', () => switchScreen(item.dataset.screen));
     });
-
-    const btnBack = document.getElementById('btn-back');
-    if (btnBack) {
-        btnBack.onclick = () => {
-            handleBackAction();
-        };
-    }
 }
 
 // System Back Button Bridge
@@ -115,7 +108,6 @@ window.handleBackAction = () => {
             if (menu) menu.classList.remove('hidden');
             if (content) content.classList.add('hidden');
         }
-        updateBackBtn();
         return;
     }
 
@@ -133,19 +125,6 @@ window.handleBackAction = () => {
     }
 };
 
-function updateBackBtn() {
-    const btn = document.getElementById('btn-back-global');
-    if (!btn) return;
-    const activeSection = document.querySelector('.content-section.active');
-    const isSubOpen = !!document.querySelector('.sub-content:not(.hidden)');
-
-    if (isSubOpen || (activeSection && activeSection.id !== 'dashboard')) {
-        btn.classList.remove('hidden');
-    } else {
-        btn.classList.add('hidden');
-    }
-}
-
 function switchScreen(id) {
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(id);
@@ -155,15 +134,9 @@ function switchScreen(id) {
     const nav = document.querySelector(`.nav-item[data-screen="${id}"]`);
     if (nav) nav.classList.add('active');
 
-    const btnBack = document.getElementById('btn-back');
-    if (btnBack) {
-        btnBack.classList.add('hidden');
-    }
-
     if (id === 'data') {
         renderArchive();
     }
-    updateBackBtn();
 }
 
 function initSwipeNavigation() {
@@ -505,7 +478,6 @@ function switchForestPane(id, title) {
     const target = document.getElementById(id);
     if (target) target.classList.add('active');
     if (id === 'f-maps' && map) setTimeout(() => map.invalidateSize(), 200);
-    updateBackBtn();
 }
 
 function renderTempQuad() {
@@ -877,7 +849,6 @@ function initForms() {
                 const target = document.getElementById(tabId);
                 if (target) target.classList.add('active');
             }
-            updateBackBtn();
         });
     });
 }
@@ -887,7 +858,6 @@ function openTool(toolId) {
     const map = { 'forest': 'forest-capture', 'agro': 'agro-lab', 'garden': 'garden-scape', 'note': 'note-vault' };
     const target = document.getElementById(map[toolId]);
     if (target) target.classList.add('active');
-    updateBackBtn();
 }
 
 // --- Archive & Settings ---
@@ -942,7 +912,6 @@ function initSettings() {
     const panel = document.getElementById('settings-panel');
     setupListener('btn-settings', 'click', () => { if (panel) panel.classList.add('open'); });
     setupListener('btn-settings-close', 'click', () => { if (panel) panel.classList.remove('open'); });
-    setupListener('btn-back-global', 'click', () => handleBackAction());
     setupListener('data-filter-tool', 'change', () => renderArchive());
     setupListener('btn-export-xlsx', 'click', () => exportToXLSX());
     const mode = document.getElementById('pref-theme-mode');
