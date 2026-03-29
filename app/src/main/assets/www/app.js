@@ -100,13 +100,15 @@ window.handleBackAction = () => {
 
     const activeSubContent = document.querySelector('.sub-content:not(.hidden)');
     if (activeSubContent) {
-        activeSubContent.classList.add('hidden');
         const activeSubTool = document.querySelector('.content-section.active');
         if (activeSubTool) {
             const menu = activeSubTool.querySelector('.sub-menu-grid');
             const content = activeSubTool.querySelector('.sub-content');
             if (menu) menu.classList.remove('hidden');
             if (content) content.classList.add('hidden');
+
+            // Re-update header title for the module
+            updateHeaderTheme(activeSubTool.id);
         }
         return;
     }
@@ -125,10 +127,42 @@ window.handleBackAction = () => {
     }
 };
 
+function updateHeaderTheme(id) {
+    console.log("Updating header theme for: " + id);
+    const header = document.querySelector('#app-container > header');
+    const title = document.getElementById('header-title');
+    if (!header || !title) return;
+
+    header.classList.remove('forest-theme', 'agro-theme', 'garden-theme');
+    title.innerText = 'BIO LOGGER';
+
+    if (id === 'forest-capture') {
+        header.classList.add('forest-theme');
+        title.innerText = 'FOREST CAPTURE';
+    } else if (id === 'agro-lab') {
+        header.classList.add('agro-theme');
+        title.innerText = 'AGROCLIMATIC LAB';
+    } else if (id === 'garden-scape') {
+        header.classList.add('garden-theme');
+        title.innerText = 'GARDEN SCAPE';
+    }
+}
+
 function switchScreen(id) {
+    const activeSection = document.querySelector('.content-section.active');
+    if (activeSection) {
+        activeSection.dataset.scrollPos = activeSection.scrollTop;
+    }
+
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(id);
-    if (target) target.classList.add('active');
+    if (target) {
+        target.classList.add('active');
+        updateHeaderTheme(id);
+        if (target.dataset.scrollPos) {
+            target.scrollTop = target.dataset.scrollPos;
+        }
+    }
 
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
     const nav = document.querySelector(`.nav-item[data-screen="${id}"]`);
@@ -256,12 +290,14 @@ function initForestTools() {
 
     setupListener('btn-save-new-surv', 'click', () => {
         const name = document.getElementById('surv-name').value;
-        if (!name) return showSyncToast("Enter Survey Title.");
+        const inv = document.getElementById('surv-investigator').value;
+        const loc = document.getElementById('surv-loc').value;
+        if (!name || !inv || !loc) return showSyncToast("Complete all metadata fields.");
         const survey = {
             id: Date.now(),
             name,
-            investigator: document.getElementById('surv-investigator').value,
-            location: document.getElementById('surv-loc').value,
+            investigator: inv,
+            location: loc,
             date: new Date().toLocaleDateString(),
             gps: document.getElementById('tel-gps').innerText
         };
@@ -289,11 +325,44 @@ function initForestTools() {
         };
     });
 
+    setupListener('btn-sync-q-gps', 'click', () => {
+        document.getElementById('q-gps').value = document.getElementById('tel-gps').innerText;
+    });
+
+    setupListener('btn-save-wp', 'click', () => {
+        const name = document.getElementById('wp-name').value;
+        const type = document.getElementById('wp-type').value;
+        if (!name) return showSyncToast("Enter Waypoint Name.");
+        saveForestData('GPS Waypoint', {
+            name,
+            type,
+            gps: document.getElementById('tel-gps').innerText
+        });
+        document.getElementById('wp-name').value = '';
+    });
+
     // One-Tap Auto-fill for Env
     setupListener('btn-autofill-env', 'click', () => {
-        document.getElementById('e-weather-temp').value = state.lastTelemetry.temp + "°C";
-        document.getElementById('e-weather-hum').value = state.lastTelemetry.hum + "%";
+        const t = document.getElementById('e-weather-temp');
+        const h = document.getElementById('e-weather-hum');
+        if (t) t.value = state.lastTelemetry.temp + "°C";
+        if (h) h.value = state.lastTelemetry.hum + "%";
         showSyncToast("Environmental Matrix Synced.");
+    });
+
+    setupListener('btn-save-env-data', 'click', () => {
+        const slope = document.getElementById('e-slope').value;
+        const aspect = document.getElementById('e-aspect').value;
+        const canopy = document.getElementById('e-canopy').value;
+        const soil = document.getElementById('e-soil-type').value;
+
+        if (!slope || !aspect || !canopy || !soil) return showSyncToast("Complete all environmental fields.");
+
+        saveForestData('Environmental Matrix', {
+            temp: document.getElementById('e-weather-temp').value,
+            hum: document.getElementById('e-weather-hum').value,
+            slope, aspect, canopy, soil
+        });
     });
 
     // Quadrat Logic
@@ -371,10 +440,11 @@ function initForestTools() {
     // Herbarium
     setupListener('btn-save-herb', 'click', () => {
         const binomial = document.getElementById('h-binomial').value;
-        if (!binomial) return showSyncToast("Enter Binomial Name.");
+        const family = document.getElementById('h-family').value;
+        if (!binomial || !family) return showSyncToast("Enter Binomial and Family.");
         saveForestData('Herbarium Voucher', {
             binomial,
-            family: document.getElementById('h-family').value,
+            family: family,
             notes: document.getElementById('h-notes').value,
             specimenID: document.getElementById('herb-id-box').innerText
         });
@@ -563,6 +633,7 @@ function initGardenTools() {
     setupListener('btn-gm-calc', 'click', () => {
         const l = parseFloat(document.getElementById('gm-len').value) || 0;
         const w = parseFloat(document.getElementById('gm-wid').value) || 0;
+        if (l <= 0 || w <= 0) return showSyncToast("Enter valid dimensions.");
         const area = l * w;
         const areaEl = document.getElementById('gm-area');
         if (areaEl) areaEl.innerText = area.toFixed(2) + " m²";
@@ -572,14 +643,16 @@ function initGardenTools() {
     });
 
     setupListener('btn-gy-calc', 'click', () => {
+        const crop = document.getElementById('gy-crop').value;
         const area = parseFloat(document.getElementById('gy-area').value) || 0;
         const constant = parseFloat(document.getElementById('gy-const').value) || 0;
+        if (!crop || area <= 0 || constant <= 0) return showSyncToast("Complete all yield fields.");
         const yieldVal = area * constant;
         const valEl = document.getElementById('gy-val');
         if (valEl) valEl.innerText = yieldVal.toFixed(2) + " kg";
         const resBox = document.getElementById('gy-res-box');
         if (resBox) resBox.classList.remove('hidden');
-        saveGardenData('Yield Estimation', { crop: document.getElementById('gy-crop').value, area, constant, yield: yieldVal });
+        saveGardenData('Yield Estimation', { crop: crop, area, constant, yield: yieldVal });
     });
 
     const rotHintEl = document.getElementById('gr-hint');
@@ -613,7 +686,54 @@ function initGardenTools() {
     });
 
     setupListener('btn-gs-save', 'click', () => {
-        saveGardenData('Soil Condition', { ph: document.getElementById('gs-ph').value, texture: document.getElementById('gs-texture').value });
+        const ph = document.getElementById('gs-ph').value;
+        const texture = document.getElementById('gs-texture').value;
+        if (!ph || !texture) return showSyncToast("Complete all soil fields.");
+        saveGardenData('Soil Condition', { ph: ph, texture: texture });
+    });
+
+    setupListener('btn-gs-match', 'click', () => {
+        const zone = document.getElementById('gs-zone').value;
+        const season = document.getElementById('gs-season').value;
+        const recommendations = {
+            '1-3': { 'spring': 'Radish, Spinach, Peas', 'summer': 'Potato, Cabbage', 'autumn': 'Kale, Garlic', 'winter': 'Indoor Herbs' },
+            '4-6': { 'spring': 'Lettuce, Carrots', 'summer': 'Tomato, Cucumber', 'autumn': 'Beets, Broccoli', 'winter': 'Cover Crops' },
+            '7-9': { 'spring': 'Okra, Eggplant', 'summer': 'Sweet Potato, Peppers', 'autumn': 'Onions, Beans', 'winter': 'Cabbage' },
+            '10+': { 'spring': 'Ginger, Turmeric', 'summer': 'Tropical Fruits', 'autumn': 'Sweet Potato', 'winter': 'All Year Crops' }
+        };
+        const resList = document.getElementById('gs-match-list');
+        resList.innerText = recommendations[zone][season] || "Consult local guide.";
+        document.getElementById('gs-match-res').classList.remove('hidden');
+    });
+
+    setupListener('btn-gp-check', 'click', () => {
+        const crop = document.getElementById('gp-crop').value.toLowerCase();
+        const companionData = {
+            'tomato': { good: 'Basil, Marigold, Carrots', bad: 'Potato, Fennel, Cabbage' },
+            'carrot': { good: 'Tomato, Onion, Leek', bad: 'Dill, Parsnip' },
+            'potato': { good: 'Beans, Corn, Cabbage', bad: 'Tomato, Cucumber, Sunflower' }
+        };
+        const res = companionData[crop] || { good: 'General companions apply.', bad: 'No specific avoidances known.' };
+        document.getElementById('gp-good').innerText = "✓ COMPANIONS: " + res.good;
+        document.getElementById('gp-bad').innerText = "✕ AVOID: " + res.bad;
+        document.getElementById('gp-res').classList.remove('hidden');
+    });
+
+    setupListener('btn-gt-save', 'click', () => {
+        const crop = document.getElementById('gt-crop').value;
+        const stage = document.getElementById('gt-stage').value;
+        if (!crop) return showSyncToast("Enter Crop ID.");
+        saveGardenData('Life Cycle Stage', { crop, stage });
+    });
+
+    setupListener('gw-search', 'input', (e) => {
+        const q = e.target.value.toLowerCase();
+        const wiki = {
+            'tomato': 'Solanum lycopersicum. Optimal pH: 6.0-6.8. Requires 6-8 hours of sunlight.',
+            'carrot': 'Daucus carota. Deep, well-drained sandy loam required. pH 6.0-6.5.',
+            'kale': 'Brassica oleracea. Cold-hardy biennial. Rich in Vitamins A, C, K.'
+        };
+        document.getElementById('gw-res').innerText = wiki[q] || "No research data found for this taxon.";
     });
 }
 
@@ -636,17 +756,19 @@ function initNoteVault() {
 
     setupListener('btn-nv-save', 'click', () => {
         const text = document.getElementById('nv-text').value;
+        const tag = document.getElementById('nv-tag').value;
         if (!text) return;
         const entry = {
             id: Date.now(),
             module: 'note',
-            title: 'Neural Observation',
-            data: { text },
+            title: tag ? `Observation [${tag}]` : 'Neural Observation',
+            data: { text, tag },
             timestamp: new Date().toLocaleString()
         };
         state.entries.unshift(entry);
         saveData();
         document.getElementById('nv-text').value = '';
+        document.getElementById('nv-tag').value = '';
         showSyncToast("Observation Synchronized.");
     });
 }
@@ -684,10 +806,12 @@ function initAgroTools() {
     });
 
     setupListener('btn-save-germ-final', 'click', () => {
-        if (tempGermEntries.length === 0) return showSyncToast("No data to save.");
+        const seed = document.getElementById('ag-seed-type').value;
+        const total = document.getElementById('ag-seed-count').value;
+        if (!seed || !total || tempGermEntries.length === 0) return showSyncToast("No data to save.");
         saveAgroData('Germination Study', {
-            seed: document.getElementById('ag-seed-type').value,
-            total: document.getElementById('ag-seed-count').value,
+            seed: seed,
+            total: total,
             entries: tempGermEntries,
             stats: calculateGermStats()
         });
@@ -696,20 +820,42 @@ function initAgroTools() {
         document.getElementById('germ-results-box').classList.add('hidden');
     });
 
+    setupListener('btn-save-pot-init', 'click', () => {
+        const id = document.getElementById('ap-id').value;
+        const seed = document.getElementById('ap-seed').value;
+        const soil = document.getElementById('ap-soil').value;
+        const date = document.getElementById('ap-date').value;
+        if (!id || !seed || !soil || !date) return showSyncToast("Complete all pot fields.");
+        saveAgroData('Pot Initiation', { id, seed, soil, date });
+        showSyncToast("Pot Study Initialized.");
+    });
+
     setupListener('btn-save-growth', 'click', () => {
         const sample = document.getElementById('agro-sample-id').value;
         const h = document.getElementById('agro-height').value;
         const l = document.getElementById('agro-leaves').value;
-        if (!sample) return showSyncToast("Enter Sample ID.");
+        if (!sample || !h || !l) return showSyncToast("Complete all growth fields.");
         saveAgroData('Growth Metrics', { sample, height: h, leaves: l });
     });
 
     setupListener('btn-save-agro-env', 'click', () => {
+        const co2 = document.getElementById('ae-co2').value;
+        const lux = document.getElementById('ae-lux').value;
+        const moist = document.getElementById('ae-soil-moist').value;
+        if (!co2 || !lux || !moist) return showSyncToast("Complete all environmental fields.");
         saveAgroData('Env Monitor', {
-            co2: document.getElementById('ae-co2').value,
-            lux: document.getElementById('ae-lux').value,
-            soilMoist: document.getElementById('ae-soil-moist').value
+            co2: co2,
+            lux: lux,
+            soilMoist: moist
         });
+    });
+
+    setupListener('btn-save-agro-control', 'click', () => {
+        const target = document.getElementById('ac-target').value;
+        const type = document.getElementById('ac-type').value;
+        const amount = document.getElementById('ac-amount').value;
+        if (!target || !amount) return showSyncToast("Complete all input fields.");
+        saveAgroData('Input Control', { target, type, amount });
     });
 
     setupListener('btn-agro-compare', 'click', () => {
@@ -726,6 +872,30 @@ function initAgroTools() {
 
         document.getElementById('agro-compare-results').classList.remove('hidden');
         updateAgroCompareChart(t1, t2, v1, v2, metric);
+    });
+
+    setupListener('btn-refresh-agro-viz', 'click', () => {
+        const ctx = document.getElementById('chart-agro-summary');
+        if (!ctx) return;
+
+        const agroEntries = state.entries.filter(e => e.module === 'agro');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Germination', 'Growth', 'Pot Info', 'Env', 'Control'],
+                datasets: [{
+                    data: [
+                        agroEntries.filter(e => e.title.includes('Germ')).length,
+                        agroEntries.filter(e => e.title.includes('Growth')).length,
+                        agroEntries.filter(e => e.title.includes('Pot')).length,
+                        agroEntries.filter(e => e.title.includes('Env')).length,
+                        agroEntries.filter(e => e.title.includes('Control')).length
+                    ],
+                    backgroundColor: ['#00e676', '#00b0ff', '#d500f9', '#ffea00', '#ff5252']
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#fff' } } } }
+        });
     });
 }
 
@@ -841,6 +1011,7 @@ function initForms() {
             const menu = parent.querySelector('.sub-menu-grid');
             const content = parent.querySelector('.sub-content');
             const tabId = card.dataset.tab;
+            const toolTitle = card.querySelector('h4').innerText;
 
             if (menu) menu.classList.add('hidden');
             if (content) {
@@ -848,16 +1019,18 @@ function initForms() {
                 content.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
                 const target = document.getElementById(tabId);
                 if (target) target.classList.add('active');
+
+                // Update Header Title to Sub-Tool Name
+                const headerTitle = document.getElementById('header-title');
+                if (headerTitle) headerTitle.innerText = toolTitle.toUpperCase();
             }
         });
     });
 }
 
 function openTool(toolId) {
-    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
     const map = { 'forest': 'forest-capture', 'agro': 'agro-lab', 'garden': 'garden-scape', 'note': 'note-vault' };
-    const target = document.getElementById(map[toolId]);
-    if (target) target.classList.add('active');
+    switchScreen(map[toolId]);
 }
 
 // --- Archive & Settings ---
