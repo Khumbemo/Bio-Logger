@@ -1,11 +1,11 @@
 package com.biologger.garden
-
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +31,8 @@ class PlantWikiFragment : Fragment() {
         val maturity_days: Int,
         val ph_range: String,
         val local_names: Map<String, String>?,
+        val region: String?,
+        val elevation: String?,
         val tips: String
     )
 
@@ -87,6 +89,7 @@ class PlantWikiFragment : Fragment() {
             val sci: TextView = v.findViewById(R.id.textScientific)
             val mat: TextView = v.findViewById(R.id.textMaturity)
             val ph: TextView = v.findViewById(R.id.textPh)
+            val region: TextView = v.findViewById(R.id.textRegion)
             val tips: TextView = v.findViewById(R.id.textTips)
         }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -100,7 +103,8 @@ class PlantWikiFragment : Fragment() {
             holder.name.text = item.name + localStr
             holder.sci.text = item.scientific
             holder.mat.text = "Maturity: ${item.maturity_days} days (${item.season})"
-            holder.ph.text = "pH: ${item.ph_range}"
+            holder.ph.text = "pH: ${item.ph_range} | Alt: ${item.elevation ?: "N/A"}"
+            holder.region.text = "Districts: ${item.region ?: "Nagaland"}"
             holder.tips.text = item.tips
         }
         override fun getItemCount() = list.size

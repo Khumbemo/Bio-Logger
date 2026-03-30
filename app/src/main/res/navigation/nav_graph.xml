@@ -12,6 +12,13 @@
         android:label="Field Research Suite"
         tools:layout="@layout/fragment_main_dashboard">
         <action
+            android:id="@+id/action_mainDashboardFragment_to_exportCenterFragment"
+            app:destination="@id/exportCenterFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_mainDashboardFragment_to_forestHomeFragment"
             app:destination="@id/forestHomeFragment"
             app:enterAnim="@anim/fade_in"
@@ -240,5 +247,11 @@
             android:name="noteId"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/exportCenterFragment"
+        android:name="com.biologger.export.ExportCenterFragment"
+        android:label="Export Center"
+        tools:layout="@layout/fragment_export_center" />
 
 </navigation>

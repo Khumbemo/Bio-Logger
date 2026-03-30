@@ -1,5 +1,24 @@
 [
   {
+    "name": "King Chili",
+    "local_names": {
+      "common": "Raja Mircha",
+      "naga": "Naga Jolokia",
+      "ao": "Siratshisü",
+      "sumi": "Akükiphayekhe"
+    },
+    "scientific": "Capsicum chinense",
+    "family": "Solanaceae",
+    "season": "Kharif (Mono)",
+    "months": "April-August",
+    "maturity_days": 120,
+    "ph_range": "5.0-6.0",
+    "region": "Peren, Kohima, Dimapur",
+    "elevation": "500-1500m",
+    "jhum_suitability": "Medium",
+    "tips": "Requires high humidity and partial shade. Famous for extreme heat (SHU > 1M)."
+  },
+  {
     "name": "Foxtail Millet",
     "local_names": {
       "common": "Ragi",
@@ -12,33 +31,17 @@
     "months": "May-September",
     "maturity_days": 100,
     "ph_range": "5.5-7.0",
-    "gdd_base": 10.0,
+    "region": "Tuensang, Phek, Mon",
+    "elevation": "1000-2000m",
     "jhum_suitability": "High",
-    "companions": ["Cowpea", "Pigeon pea"],
     "tips": "Excellent for jhum cultivation; highly drought tolerant."
-  },
-  {
-    "name": "King Chili",
-    "local_names": {
-      "common": "Raja Mircha",
-      "naga": "Naga Jolokia"
-    },
-    "scientific": "Capsicum chinense",
-    "family": "Solanaceae",
-    "season": "Kharif (Mono)",
-    "months": "April-August",
-    "maturity_days": 120,
-    "ph_range": "5.0-6.0",
-    "gdd_base": 15.0,
-    "jhum_suitability": "Medium",
-    "companions": ["Taro", "Yam"],
-    "tips": "Requires high humidity and partial shade. Sensitive to waterlogging."
   },
   {
     "name": "Tree Tomato",
     "local_names": {
       "common": "Tamarillo",
-      "angami": "Khuzu baza"
+      "angami": "Khuzu baza",
+      "ao": "Tsüngremtsü"
     },
     "scientific": "Solanum betaceum",
     "family": "Solanaceae",
@@ -46,15 +49,16 @@
     "months": "October-February",
     "maturity_days": 180,
     "ph_range": "5.0-6.5",
-    "gdd_base": 10.0,
+    "region": "Kohima, Phek, Zunheboto",
+    "elevation": "1500m+",
     "jhum_suitability": "Low",
-    "companions": ["Mustard"],
     "tips": "Perennial shrub; needs protection from strong winds and frost."
   },
   {
     "name": "Naga Cucumber",
     "local_names": {
-      "common": "Local Cucumber"
+      "common": "Local Cucumber",
+      "ao": "Metsü"
     },
     "scientific": "Cucumis sativus var. naga",
     "family": "Cucurbitaceae",
@@ -62,49 +66,56 @@
     "months": "May-August",
     "maturity_days": 70,
     "ph_range": "5.5-6.8",
-    "gdd_base": 12.0,
+    "region": "Widespread",
+    "elevation": "Widespread",
     "jhum_suitability": "High",
-    "companions": ["Corn", "Millet"],
-    "tips": "Traditionally intercropped in jhum fields. Large fruit size."
+    "tips": "Traditionally intercropped in jhum fields. GI tagged."
   },
   {
-    "name": "Tomato",
-    "scientific": "Solanum lycopersicum",
-    "family": "Solanaceae",
-    "season": "Year-round",
-    "maturity_days": 75,
-    "ph_range": "6.0-6.8",
-    "local_names": {"common": "Tomato"},
-    "tips": "Stake plants for better air circulation and avoid overhead watering."
+    "name": "Axone (Soybean)",
+    "local_names": {
+      "sumi": "Axone",
+      "ao": "Akiyung"
+    },
+    "scientific": "Glycine max",
+    "family": "Fabaceae",
+    "season": "Kharif",
+    "months": "June-October",
+    "maturity_days": 110,
+    "ph_range": "6.0-7.0",
+    "region": "Zunheboto, Mokokchung",
+    "elevation": "1000-1800m",
+    "jhum_suitability": "High",
+    "tips": "Used extensively for fermentation (Axone). Improves soil nitrogen."
   },
   {
-    "name": "Pepper",
-    "scientific": "Capsicum annuum",
-    "family": "Solanaceae",
-    "season": "Summer",
-    "maturity_days": 80,
-    "ph_range": "6.2-7.0",
-    "local_names": {"common": "Capsicum"},
-    "tips": "Provide consistent moisture and high light levels."
+    "name": "Local Rice (Kholar)",
+    "local_names": {
+      "common": "Highland Rice"
+    },
+    "scientific": "Oryza sativa",
+    "family": "Poaceae",
+    "season": "Kharif",
+    "months": "May-November",
+    "maturity_days": 160,
+    "ph_range": "5.0-6.5",
+    "region": "Phek, Kiphire",
+    "elevation": "1200-2500m",
+    "jhum_suitability": "High",
+    "tips": "Terraced (TRC) or Jhum cultivation. Cold tolerant varieties exist."
   },
   {
-    "name": "Cucumber",
-    "scientific": "Cucumis sativus",
+    "name": "Bitter Gourd",
+    "local_names": {
+      "ao": "Mezük"
+    },
+    "scientific": "Momordica charantia",
     "family": "Cucurbitaceae",
     "season": "Summer",
-    "maturity_days": 60,
+    "maturity_days": 70,
     "ph_range": "6.0-7.0",
-    "local_names": {"common": "Cucumber"},
-    "tips": "Needs regular watering and space to climb or spread."
-  },
-  {
-    "name": "Lettuce",
-    "scientific": "Lactuca sativa",
-    "family": "Asteraceae",
-    "season": "Winter",
-    "maturity_days": 45,
-    "ph_range": "6.0-7.0",
-    "local_names": {"common": "Lettuce"},
-    "tips": "Grows best in cool weather; provide partial shade in hot climates."
+    "region": "Dimapur, Wokha",
+    "elevation": "Lower belts",
+    "tips": "Needs support for vines. High medicinal value."
   }
 ]

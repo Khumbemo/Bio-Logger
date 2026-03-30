@@ -1,10 +1,10 @@
 package com.biologger.greenhouse
-
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.view.ViewCompat
@@ -32,11 +32,16 @@ class PotExperimentFragment : Fragment() {
 
         spinnerRandom.setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, arrayOf("CRD", "RCBD", "Split-plot")))
 
+        val textTotalPots = view.findViewById<TextView>(R.id.resTotalPots)
+        val textAllocation = view.findViewById<TextView>(R.id.resAllocation)
+        val editTitle = view.findViewById<TextInputEditText>(R.id.editTitle)
+        val editCrop = view.findViewById<TextInputEditText>(R.id.editCrop)
+
         btnSave.setOnClickListener {
             val t = editT.text.toString().toIntOrNull() ?: 0
             val r = editR.text.toString().toIntOrNull() ?: 0
             val total = t * r
-            view.findViewById<TextView>(R.id.resTotalPots).text = "Total Pots: $total"
+            textTotalPots.text = "Total Pots: $total"
 
             // Randomisation logic
             val pots = mutableListOf<String>()
@@ -46,13 +51,14 @@ class PotExperimentFragment : Fragment() {
                 }
             }
             pots.shuffle()
-            view.findViewById<TextView>(R.id.resAllocation).text = "Allocation: " + pots.take(5).joinToString(", ") + "..."
+            textAllocation.text = "Allocation: " + pots.take(5).joinToString(", ") + "..."
 
             cardRes.visibility = View.VISIBLE
 
             viewModel.insertPotExperiment(PotExperiment(
-                expId = "EXP-${System.currentTimeMillis()}", title = view.findViewById<TextInputEditText>(R.id.editTitle).text.toString(),
-                crop = view.findViewById<TextInputEditText>(R.id.editCrop).text.toString(),
+                expId = "EXP-${System.currentTimeMillis()}",
+                title = editTitle.text.toString(),
+                crop = editCrop.text.toString(),
                 startDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()),
                 durationWeeks = 8, treatmentNamesJson = "", replicates = r, potSize = 0.0, medium = "",
                 randomisation = spinnerRandom.text.toString(), wateringFreq = "", parametersJson = "", allocationJson = pots.joinToString(","), scheduleJson = "", status = "Active"

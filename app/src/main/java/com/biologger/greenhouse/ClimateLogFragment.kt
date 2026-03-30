@@ -1,10 +1,10 @@
 package com.biologger.greenhouse
-
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.core.view.ViewCompat
@@ -14,6 +14,11 @@ import androidx.fragment.app.viewModels
 import com.biologger.R
 import com.biologger.data.ClimateRecord
 import com.biologger.viewmodel.ScientificViewModel
+import android.graphics.Color
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
@@ -30,6 +35,13 @@ class ClimateLogFragment : Fragment() {
         val editHumidity = view.findViewById<TextInputEditText>(R.id.editHumidity)
         val btnSave = view.findViewById<MaterialButton>(R.id.btnSave)
         val cardResults = view.findViewById<MaterialCardView>(R.id.cardResults)
+        val chart = view.findViewById<LineChart>(R.id.climateChart)
+
+        setupChart(chart)
+
+        viewModel.repository.getAllClimateRecords().observe(viewLifecycleOwner) { data ->
+            updateChart(chart, data)
+        }
 
         btnSave.setOnClickListener {
             val tDay = editDayTemp.text.toString().toDoubleOrNull() ?: 0.0
@@ -62,5 +74,39 @@ class ClimateLogFragment : Fragment() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
         return view
+    }
+
+    private fun setupChart(chart: LineChart) {
+        chart.description.isEnabled = false
+        chart.setTouchEnabled(true)
+        chart.setPinchZoom(true)
+        chart.xAxis.textColor = Color.WHITE
+        chart.axisLeft.textColor = Color.WHITE
+        chart.axisRight.isEnabled = false
+        chart.legend.textColor = Color.WHITE
+    }
+
+    private fun updateChart(chart: LineChart, data: List<ClimateRecord>) {
+        if (data.isEmpty()) return
+
+        val entriesTemp = data.take(10).reversed().mapIndexed { i, r -> Entry(i.toFloat(), r.tempDay.toFloat()) }
+        val entriesHumid = data.take(10).reversed().mapIndexed { i, r -> Entry(i.toFloat(), r.humidity.toFloat()) }
+
+        val setTemp = LineDataSet(entriesTemp, "Temp (°C)").apply {
+            color = Color.CYAN
+            setCircleColor(Color.CYAN)
+            lineWidth = 2f
+            valueTextColor = Color.WHITE
+        }
+
+        val setHumid = LineDataSet(entriesHumid, "Humidity (%)").apply {
+            color = Color.YELLOW
+            setCircleColor(Color.YELLOW)
+            lineWidth = 2f
+            valueTextColor = Color.WHITE
+        }
+
+        chart.data = LineData(setTemp, setHumid)
+        chart.invalidate()
     }
 }

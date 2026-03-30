@@ -1,11 +1,11 @@
 package com.biologger.forest
-
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import android.content.Context
+import android.net.Uri
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.result.contract.ActivityResultContracts
@@ -29,22 +29,25 @@ class DigitalHerbariumFragment : Fragment() {
     private val photoUris = mutableListOf<String>()
     private lateinit var photoAdapter: NewNoteFragment.PhotoUriAdapter
 
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri?.let {
+            photoUris.add(it.toString())
+            photoAdapter.notifyItemInserted(photoUris.size - 1)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_digital_herbarium, container, false)
-        val pick = registerForActivityResult(ActivityResultContracts.GetContent()) { it?.let {
-            photoUris.add(it.toString())
-            photoAdapter.notifyItemInserted(photoUris.size - 1)
-        }}
 
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerPhotos)
         photoAdapter = NewNoteFragment.PhotoUriAdapter(photoUris)
         recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recycler.adapter = photoAdapter
 
-        view.findViewById<MaterialButton>(R.id.btnTakePhoto).setOnClickListener { pick.launch("image/*") }
+        view.findViewById<MaterialButton>(R.id.btnTakePhoto).setOnClickListener { pickImageLauncher.launch("image/*") }
         view.findViewById<MaterialButton>(R.id.btnSave).setOnClickListener {
             viewModel.insertHerbariumSpecimen(HerbariumSpecimen(
                 specimenId = "HERB-${System.currentTimeMillis()}", family = view.findViewById<EditText>(R.id.editFamily).text.toString(),

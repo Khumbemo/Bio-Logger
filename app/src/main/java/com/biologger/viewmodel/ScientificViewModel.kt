@@ -1,8 +1,8 @@
 package com.biologger.viewmodel
-import android.view.ViewGroup
-import android.view.View
-import android.view.LayoutInflater
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class ScientificViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: ScientificRepository
+    val repository: ScientificRepository
 
     init {
         val dao = AppDatabase.getDatabase(application).scientificDao()

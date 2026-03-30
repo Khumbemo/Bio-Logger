@@ -1,11 +1,11 @@
 package com.biologger
-
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+
+import android.annotation.SuppressLint
+import android.view.MotionEvent
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
@@ -43,6 +43,10 @@ class MainDashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_mainDashboardFragment_to_noteVaultHomeFragment)
         }
         cardNotes.addPressAnimation()
+
+        view.findViewById<View>(R.id.btnNavExport).setOnClickListener {
+            findNavController().navigate(R.id.action_mainDashboardFragment_to_exportCenterFragment)
+        }
 
         return view
     }
