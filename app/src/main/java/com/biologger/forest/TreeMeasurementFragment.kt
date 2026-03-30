@@ -101,6 +101,21 @@ class TreeMeasurementFragment : Fragment() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
 
+<<<<<<< HEAD
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            val navHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            v.setPadding(0, 0, 0, maxOf(imeHeight, navHeight))
+            insets
+        }
+
+        view.setOnClickListener {
+            val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+
+=======
+>>>>>>> master
         return view
     }
 }

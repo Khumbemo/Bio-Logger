@@ -1,6 +1,11 @@
 package com.biologger
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
+=======
+import android.os.Bundle
+import android.view.LayoutInflater
+>>>>>>> master
 import android.view.View
 import android.view.ViewGroup
 
