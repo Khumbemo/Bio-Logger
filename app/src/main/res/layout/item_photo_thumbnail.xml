@@ -4,7 +4,7 @@
     android:layout_width="80dp"
     android:layout_height="80dp"
     android:layout_margin="4dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="16dp" style="@style/GlassCard">
 
     <ImageView
         android:id="@+id/imageThumbnail"

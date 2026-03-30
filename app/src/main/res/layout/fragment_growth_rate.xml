@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never" android:scrollbars="none">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Plant ID"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editPlantId" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerGrowth" android:layout_width="match_parent" android:layout_height="300dp" android:layout_marginTop="16dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnAdd" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:text="Add Measurement" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Analyze &amp; Save" android:backgroundTint="@color/greenhouse_teal" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

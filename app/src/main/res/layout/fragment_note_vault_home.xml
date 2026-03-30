@@ -64,11 +64,7 @@
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
-<<<<<<< HEAD
     <androidx.recyclerview.widget.RecyclerView android:overScrollMode="never" android:scrollbars="none"
-=======
-    <androidx.recyclerview.widget.RecyclerView
->>>>>>> master
         android:id="@+id/recyclerNotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"

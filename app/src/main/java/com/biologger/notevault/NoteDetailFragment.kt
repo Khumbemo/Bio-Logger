@@ -1,32 +1,23 @@
 package com.biologger.notevault
-
-<<<<<<< HEAD
-import android.content.Context
-import android.graphics.Color
-=======
->>>>>>> master
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
+
+import android.content.Context
+import android.graphics.Color
+import android.net.Uri
+import android.os.Environment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EdgeEffect
-=======
->>>>>>> master
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
-<<<<<<< HEAD
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-=======
->>>>>>> master
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -84,14 +75,11 @@ class NoteDetailFragment : Fragment() {
 
         photoAdapter = NewNoteFragment.PhotoUriAdapter(photoUris)
         recyclerPhotos.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-<<<<<<< HEAD
         recyclerPhotos.edgeEffectFactory = object : RecyclerView.EdgeEffectFactory() {
             override fun createEdgeEffect(view: RecyclerView, direction: Int) = EdgeEffect(view.context).apply {
                 color = Color.TRANSPARENT
             }
         }
-=======
->>>>>>> master
         recyclerPhotos.adapter = photoAdapter
 
         viewModel.getNoteById(noteId) { note ->
@@ -156,7 +144,6 @@ class NoteDetailFragment : Fragment() {
                 .show()
         }
 
-<<<<<<< HEAD
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
             val navHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
@@ -169,8 +156,6 @@ class NoteDetailFragment : Fragment() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
 
-=======
->>>>>>> master
         return view
     }
 

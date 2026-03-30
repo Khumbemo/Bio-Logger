@@ -1,7 +1,4 @@
 package com.biologger
-
-<<<<<<< HEAD
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -11,12 +8,12 @@ import android.view.LayoutInflater
 >>>>>>> master
 import android.view.View
 import android.view.ViewGroup
+
+import android.annotation.SuppressLint
+import android.view.MotionEvent
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-<<<<<<< HEAD
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-=======
->>>>>>> master
 import com.google.android.material.card.MaterialCardView
 
 class MainDashboardFragment : Fragment() {
@@ -27,7 +24,6 @@ class MainDashboardFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_dashboard, container, false)
 
-<<<<<<< HEAD
         val cardForest = view.findViewById<MaterialCardView>(R.id.cardForest)
         val cardGreenhouse = view.findViewById<MaterialCardView>(R.id.cardGreenhouse)
         val cardGarden = view.findViewById<MaterialCardView>(R.id.cardGarden)
@@ -52,6 +48,10 @@ class MainDashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_mainDashboardFragment_to_noteVaultHomeFragment)
         }
         cardNotes.addPressAnimation()
+
+        view.findViewById<View>(R.id.btnNavExport).setOnClickListener {
+            findNavController().navigate(R.id.action_mainDashboardFragment_to_exportCenterFragment)
+        }
 
         return view
     }
@@ -81,24 +81,4 @@ class MainDashboardFragment : Fragment() {
             false
         }
     }
-=======
-        view.findViewById<MaterialCardView>(R.id.cardForest).setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_forestHomeFragment)
-        }
-
-        view.findViewById<MaterialCardView>(R.id.cardGreenhouse).setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_greenhouseHomeFragment)
-        }
-
-        view.findViewById<MaterialCardView>(R.id.cardGarden).setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_gardenHomeFragment)
-        }
-
-        view.findViewById<MaterialCardView>(R.id.cardNotes).setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_noteVaultHomeFragment)
-        }
-
-        return view
-    }
->>>>>>> master
 }

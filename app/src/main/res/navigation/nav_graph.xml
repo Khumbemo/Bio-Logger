@@ -12,8 +12,14 @@
         android:label="Field Research Suite"
         tools:layout="@layout/fragment_main_dashboard">
         <action
+            android:id="@+id/action_mainDashboardFragment_to_exportCenterFragment"
+            app:destination="@id/exportCenterFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_mainDashboardFragment_to_forestHomeFragment"
-<<<<<<< HEAD
             app:destination="@id/forestHomeFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
@@ -40,18 +46,6 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
-=======
-            app:destination="@id/forestHomeFragment" />
-        <action
-            android:id="@+id/action_mainDashboardFragment_to_greenhouseHomeFragment"
-            app:destination="@id/greenhouseHomeFragment" />
-        <action
-            android:id="@+id/action_mainDashboardFragment_to_gardenHomeFragment"
-            app:destination="@id/gardenHomeFragment" />
-        <action
-            android:id="@+id/action_mainDashboardFragment_to_noteVaultHomeFragment"
-            app:destination="@id/noteVaultHomeFragment" />
->>>>>>> master
     </fragment>
 
     <!-- MODULE 1 — FOREST CAPTURE -->
@@ -60,7 +54,6 @@
         android:name="com.biologger.forest.ForestHomeFragment"
         android:label="Forest Capture"
         tools:layout="@layout/fragment_forest_home">
-<<<<<<< HEAD
         <action android:id="@+id/action_forestHomeFragment_to_treeMeasurementFragment" app:destination="@id/treeMeasurementFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
@@ -103,22 +96,6 @@
         <action android:id="@+id/action_forestHomeFragment_to_digitalHerbariumFragment" app:destination="@id/digitalHerbariumFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
-=======
-        <action android:id="@+id/action_forestHomeFragment_to_treeMeasurementFragment" app:destination="@id/treeMeasurementFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_basalAreaFragment" app:destination="@id/basalAreaFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_standDensityFragment" app:destination="@id/standDensityFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_timberVolumeFragment" app:destination="@id/timberVolumeFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_biomassFragment" app:destination="@id/biomassFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_treeHealthFragment" app:destination="@id/treeHealthFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_crownCoverFragment" app:destination="@id/crownCoverFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_litterfallFragment" app:destination="@id/litterfallFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_quadratStudiesFragment" app:destination="@id/quadratStudiesFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_transectStudiesFragment" app:destination="@id/transectStudiesFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_gpsAndMappingFragment" app:destination="@id/gpsAndMappingFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_environmentalVariablesFragment" app:destination="@id/environmentalVariablesFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_disturbanceIndexFragment" app:destination="@id/disturbanceIndexFragment" />
-        <action android:id="@+id/action_forestHomeFragment_to_digitalHerbariumFragment" app:destination="@id/digitalHerbariumFragment" />
->>>>>>> master
     </fragment>
 
     <!-- Forest Tools -->
@@ -143,7 +120,6 @@
         android:name="com.biologger.greenhouse.GreenhouseHomeFragment"
         android:label="AgroClimatic Lab"
         tools:layout="@layout/fragment_greenhouse_home">
-<<<<<<< HEAD
         <action android:id="@+id/action_greenhouseHomeFragment_to_potExperimentFragment" app:destination="@id/potExperimentFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
@@ -171,17 +147,6 @@
         <action android:id="@+id/action_greenhouseHomeFragment_to_growthRateFragment" app:destination="@id/growthRateFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
-=======
-        <action android:id="@+id/action_greenhouseHomeFragment_to_potExperimentFragment" app:destination="@id/potExperimentFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_potExperimentLoggerFragment" app:destination="@id/potExperimentLoggerFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_climateLogFragment" app:destination="@id/climateLogFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_germinationTrackerFragment" app:destination="@id/germinationTrackerFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_fertilizerCalculatorFragment" app:destination="@id/fertilizerCalculatorFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_irrigationSchedulerFragment" app:destination="@id/irrigationSchedulerFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_pestDiseaseLogFragment" app:destination="@id/pestDiseaseLogFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_harvestRecorderFragment" app:destination="@id/harvestRecorderFragment" />
-        <action android:id="@+id/action_greenhouseHomeFragment_to_growthRateFragment" app:destination="@id/growthRateFragment" />
->>>>>>> master
     </fragment>
 
     <!-- Greenhouse Tools -->
@@ -201,7 +166,6 @@
         android:name="com.biologger.garden.GardenHomeFragment"
         android:label="Garden Scape"
         tools:layout="@layout/fragment_garden_home">
-<<<<<<< HEAD
         <action android:id="@+id/action_gardenHomeFragment_to_seasonalPlannerFragment" app:destination="@id/seasonalPlannerFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
@@ -235,19 +199,6 @@
         <action android:id="@+id/action_gardenHomeFragment_to_planningCalendarFragment" app:destination="@id/planningCalendarFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
-=======
-        <action android:id="@+id/action_gardenHomeFragment_to_seasonalPlannerFragment" app:destination="@id/seasonalPlannerFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_companionPlantingFragment" app:destination="@id/companionPlantingFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_soilAmendmentFragment" app:destination="@id/soilAmendmentFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_bedLayoutFragment" app:destination="@id/bedLayoutFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_wateringScheduleFragment" app:destination="@id/wateringScheduleFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_compostTrackerFragment" app:destination="@id/compostTrackerFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_pestIdFragment" app:destination="@id/pestIdFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_yieldRecorderFragment" app:destination="@id/yieldRecorderFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_yieldEstimationFragment" app:destination="@id/yieldEstimationFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_plantWikiFragment" app:destination="@id/plantWikiFragment" />
-        <action android:id="@+id/action_gardenHomeFragment_to_planningCalendarFragment" app:destination="@id/planningCalendarFragment" />
->>>>>>> master
     </fragment>
 
     <!-- Garden Tools -->
@@ -271,7 +222,6 @@
         tools:layout="@layout/fragment_note_vault_home">
         <action
             android:id="@+id/action_noteVaultHomeFragment_to_newNoteFragment"
-<<<<<<< HEAD
             app:destination="@id/newNoteFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
@@ -280,12 +230,6 @@
             app:destination="@id/noteDetailFragment"
             app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
-=======
-            app:destination="@id/newNoteFragment" />
-        <action
-            android:id="@+id/action_noteVaultHomeFragment_to_noteDetailFragment"
-            app:destination="@id/noteDetailFragment" />
->>>>>>> master
     </fragment>
 
     <fragment
@@ -303,5 +247,11 @@
             android:name="noteId"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/exportCenterFragment"
+        android:name="com.biologger.export.ExportCenterFragment"
+        android:label="Export Center"
+        tools:layout="@layout/fragment_export_center" />
 
 </navigation>

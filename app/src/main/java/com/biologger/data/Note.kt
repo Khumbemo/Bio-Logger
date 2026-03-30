@@ -1,4 +1,8 @@
 package com.biologger.data
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

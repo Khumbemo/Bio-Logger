@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,12 +6,6 @@
     android:overScrollMode="never"
     android:scrollbars="none"
     android:fillViewport="true">
-=======
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
->>>>>>> master
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
@@ -21,17 +14,13 @@
         app:columnCount="2">
 
         <!-- Seasonal Planner -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardSeasonalPlanner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seasonal Planner" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sow and harvest dates by climate zone" android:textSize="12sp" />
@@ -39,17 +28,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Companion Planting -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardCompanionPlanting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Companion Planting" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Good and bad crop pairings guide" android:textSize="12sp" />
@@ -57,17 +42,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Soil Amendment -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardSoilAmendment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Soil Amendment" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lime and sulfur quantity calculator" android:textSize="12sp" />
@@ -75,17 +56,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Bed Layout Planner -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardBedLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bed Layout Planner" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Spacing, rows and plant count estimator" android:textSize="12sp" />
@@ -93,17 +70,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Watering Schedule -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardWateringSchedule"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Watering Schedule" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Water needs by crop, stage and weather" android:textSize="12sp" />
@@ -111,17 +84,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Composting Tracker -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardCompostTracker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Composting Tracker" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track compost stages and temperature" android:textSize="12sp" />
@@ -129,17 +98,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Pest Identifier -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardPestId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pest Identifier" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Log and identify common garden pests" android:textSize="12sp" />
@@ -147,17 +112,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Yield Recorder -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardYieldRecorder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yield Recorder" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Record harvest weight and quality" android:textSize="12sp" />
@@ -165,17 +126,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Yield Estimation -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardYieldEstimation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yield Estimation" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Predict yield before harvest" android:textSize="12sp" />
@@ -183,17 +140,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Plant Wiki -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardPlantWiki"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plant Wiki" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Browse crop profiles and care guides" android:textSize="12sp" />
@@ -201,17 +154,13 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Planning Calendar -->
-<<<<<<< HEAD
         <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-=======
-        <com.google.android.material.card.MaterialCardView
->>>>>>> master
             android:id="@+id/cardPlanningCalendar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="16dp" style="@style/GlassCard">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Planning Calendar" android:textStyle="bold" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Monthly task and sowing calendar" android:textSize="12sp" />
@@ -219,8 +168,4 @@
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.gridlayout.widget.GridLayout>
-<<<<<<< HEAD
 </androidx.core.widget.NestedScrollView>
-=======
-</ScrollView>
->>>>>>> master
