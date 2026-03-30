@@ -1,4 +1,8 @@
 package com.biologger.ui.theme
+import android.view.ViewGroup
+import android.view.View
+import android.view.LayoutInflater
+import android.os.Bundle
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,5 @@
 package com.biologger.notevault
+import android.os.Bundle
 
 import android.view.LayoutInflater
 import android.view.View

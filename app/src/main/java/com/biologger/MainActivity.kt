@@ -1,4 +1,6 @@
 package com.biologger
+import android.view.ViewGroup
+import android.view.LayoutInflater
 
 import android.graphics.Color
 import android.os.Build

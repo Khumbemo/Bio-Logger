@@ -1,4 +1,8 @@
 package com.biologger.viewmodel
+import android.view.ViewGroup
+import android.view.View
+import android.view.LayoutInflater
+import android.os.Bundle
 
 import android.app.Application
 import androidx.lifecycle.*

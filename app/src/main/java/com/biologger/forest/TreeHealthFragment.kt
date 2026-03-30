@@ -50,9 +50,18 @@ class TreeHealthFragment : Fragment() {
 
             val (cat, color) = when { score >= 80 -> "Good" to Color.GREEN; score >= 60 -> "Fair" to Color.YELLOW; score >= 40 -> "Poor" to Color.rgb(255, 165, 0); else -> "Critical" to Color.RED }
 
+            val recommendation = when(cat) {
+                "Good" -> "No immediate action. Monitor annually."
+                "Fair" -> "Monitor for pest/disease progression. Consider soil check."
+                "Poor" -> "Action required: Pruning or pest management may be needed."
+                "Critical" -> "Severe hazard. Evaluation for removal or intensive care."
+                else -> ""
+            }
+
             view.findViewById<TextView>(R.id.resHealthScore).text = "Score: %.1f".format(score)
             view.findViewById<TextView>(R.id.resHealthCategory).text = cat
             view.findViewById<TextView>(R.id.resHealthCategory).setTextColor(color)
+            view.findViewById<TextView>(R.id.resRecommendation).text = recommendation
             cardResults.visibility = View.VISIBLE
 
             viewModel.insertTreeHealth(TreeHealthRecord(
