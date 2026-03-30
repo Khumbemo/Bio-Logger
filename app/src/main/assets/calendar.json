@@ -1,0 +1,89 @@
+[
+  {
+    "month": "January",
+    "tasks": [
+      {"category": "Harvest", "description": "Harvest Rabi crops like Mustard and French beans."},
+      {"category": "Maintenance", "description": "Select and demarcate new Jhum plots. Begin clearing light brush."},
+      {"category": "Planting", "description": "Start nurseries for Tree Tomato and early chilies."}
+    ]
+  },
+  {
+    "month": "February",
+    "tasks": [
+      {"category": "Maintenance", "description": "Major felling of trees in Jhum fields. Drying of debris starts."},
+      {"category": "Planting", "description": "Sow Potato and early Ginger in lower altitude regions."}
+    ]
+  },
+  {
+    "month": "March",
+    "tasks": [
+      {"category": "Maintenance", "description": "Burning of dried debris in Jhum fields. Careful fire control required."},
+      {"category": "Sowing", "description": "Early sowing of Maize and Job's Tears in lower belts."}
+    ]
+  },
+  {
+    "month": "April",
+    "tasks": [
+      {"category": "Sowing", "description": "Sow King Chili (Raja Mircha) and local Ginger."},
+      {"category": "Sowing", "description": "Sowing of Upland Rice begins in mid-altitude regions."},
+      {"category": "Maintenance", "description": "Clearing of debris after burn (secondary cleaning)."}
+    ]
+  },
+  {
+    "month": "May",
+    "tasks": [
+      {"category": "Sowing", "description": "Main sowing of Upland Rice and Millets in Jhum fields."},
+      {"category": "Sowing", "description": "Sow Naga Cucumber and local beans/pulses."},
+      {"category": "Maintenance", "description": "First weeding of early sown Jhum plots."}
+    ]
+  },
+  {
+    "month": "June",
+    "tasks": [
+      {"category": "Sowing", "description": "Sow Axone (Soybean) for Kharif season."},
+      {"category": "Maintenance", "description": "Intensive weeding in Rice fields. Check for pests."}
+    ]
+  },
+  {
+    "month": "July",
+    "tasks": [
+      {"category": "Maintenance", "description": "Second weeding. Monitor rainfall levels for drainage."},
+      {"category": "Harvest", "description": "Harvest early Maize and some local greens."}
+    ]
+  },
+  {
+    "month": "August",
+    "tasks": [
+      {"category": "Harvest", "description": "Harvest Naga Cucumber and early chilies."},
+      {"category": "Maintenance", "description": "Final weeding in late-maturing rice plots."}
+    ]
+  },
+  {
+    "month": "September",
+    "tasks": [
+      {"category": "Harvest", "description": "Harvest Millets (Foxtail) and Job's Tears."},
+      {"category": "Planting", "description": "Start nurseries for winter vegetables (Cabbage, Cauliflower)."}
+    ]
+  },
+  {
+    "month": "October",
+    "tasks": [
+      {"category": "Harvest", "description": "Main harvest of Jhum Rice begins. Processing and storage."},
+      {"category": "Sowing", "description": "Start sowing Rabi crops: Mustard, Peas, Potato in wet terrace fields."}
+    ]
+  },
+  {
+    "month": "November",
+    "tasks": [
+      {"category": "Harvest", "description": "Complete Rice harvest. Harvest Soybean (Axone)."},
+      {"category": "Sowing", "description": "Sow local pulses and winter forage crops."}
+    ]
+  },
+  {
+    "month": "December",
+    "tasks": [
+      {"category": "Harvest", "description": "Harvest Oranges and other winter fruits."},
+      {"category": "Maintenance", "description": "Post-harvest processing. Seed selection and preservation."}
+    ]
+  }
+]

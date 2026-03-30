@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never" android:scrollbars="none">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Area (m²)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editArea" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nutrient Target (kg/ha)" android:layout_marginTop="16dp" android:textStyle="bold" android:textColor="@color/greenhouse_teal" />
+        <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="3" android:layout_marginTop="8dp">
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="4dp" android:hint="N"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editN" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginHorizontal="4dp" android:hint="P"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editP" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginStart="4dp" android:hint="K"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editK" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+        </GridLayout>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/cardResults" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" app:cardCornerRadius="16dp" style="@style/GlassCard" app:strokeColor="@color/greenhouse_teal" app:strokeWidth="2dp" android:visibility="gone">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:id="@+id/resDose" android:textSize="18sp" android:textStyle="bold" />
+                <TextView android:text="Note: Calculated based on Nitrogen as limiting factor" android:textSize="12sp" android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnCalc" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Calculate &amp; Save" android:backgroundTint="@color/greenhouse_teal" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Export Data Center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Export your research data to CSV for analysis"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
+        <!-- Forest Export -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Forestry Module"
+            android:textStyle="bold"
+            android:textColor="@color/forest_green" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportForestMeasurements"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Export Tree Measurements"
+            app:icon="@drawable/ic_forest" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportBasalArea"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Export Basal Area Plots" />
+
+        <!-- Greenhouse Export -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="AgroClimatic Module"
+            android:textStyle="bold"
+            android:textColor="@color/greenhouse_teal" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportClimateLogs"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Export Climate Records"
+            app:icon="@drawable/ic_greenhouse" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportPotObservations"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Export Pot Observations" />
+
+        <!-- Garden Export -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Garden Scape Module"
+            android:textStyle="bold"
+            android:textColor="@color/garden_amber" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportYieldRecords"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Export Yield Records"
+            app:icon="@drawable/ic_garden" />
+
+        <!-- Note Vault Export -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="General Data"
+            android:textStyle="bold"
+            android:textColor="@color/vault_purple" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportNotes"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Export All Field Notes"
+            app:icon="@drawable/ic_notes" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
