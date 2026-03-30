@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Foxtail Millet",
+    "local_names": {
+      "common": "Ragi",
+      "ao": "Sübu",
+      "angami": "Zutho"
+    },
+    "scientific": "Setaria italica",
+    "family": "Poaceae",
+    "season": "Kharif (Mono)",
+    "months": "May-September",
+    "maturity_days": 100,
+    "ph_range": "5.5-7.0",
+    "gdd_base": 10.0,
+    "jhum_suitability": "High",
+    "companions": ["Cowpea", "Pigeon pea"],
+    "tips": "Excellent for jhum cultivation; highly drought tolerant."
+  },
+  {
+    "name": "King Chili",
+    "local_names": {
+      "common": "Raja Mircha",
+      "naga": "Naga Jolokia"
+    },
+    "scientific": "Capsicum chinense",
+    "family": "Solanaceae",
+    "season": "Kharif (Mono)",
+    "months": "April-August",
+    "maturity_days": 120,
+    "ph_range": "5.0-6.0",
+    "gdd_base": 15.0,
+    "jhum_suitability": "Medium",
+    "companions": ["Taro", "Yam"],
+    "tips": "Requires high humidity and partial shade. Sensitive to waterlogging."
+  },
+  {
+    "name": "Tree Tomato",
+    "local_names": {
+      "common": "Tamarillo",
+      "angami": "Khuzu baza"
+    },
+    "scientific": "Solanum betaceum",
+    "family": "Solanaceae",
+    "season": "Rabi (Rhong)",
+    "months": "October-February",
+    "maturity_days": 180,
+    "ph_range": "5.0-6.5",
+    "gdd_base": 10.0,
+    "jhum_suitability": "Low",
+    "companions": ["Mustard"],
+    "tips": "Perennial shrub; needs protection from strong winds and frost."
+  },
+  {
+    "name": "Naga Cucumber",
+    "local_names": {
+      "common": "Local Cucumber"
+    },
+    "scientific": "Cucumis sativus var. naga",
+    "family": "Cucurbitaceae",
+    "season": "Kharif (Mono)",
+    "months": "May-August",
+    "maturity_days": 70,
+    "ph_range": "5.5-6.8",
+    "gdd_base": 12.0,
+    "jhum_suitability": "High",
+    "companions": ["Corn", "Millet"],
+    "tips": "Traditionally intercropped in jhum fields. Large fruit size."
+  },
+  {
+    "name": "Tomato",
+    "scientific": "Solanum lycopersicum",
+    "family": "Solanaceae",
+    "season": "Year-round",
+    "maturity_days": 75,
+    "ph_range": "6.0-6.8",
+    "local_names": {"common": "Tomato"},
+    "tips": "Stake plants for better air circulation and avoid overhead watering."
+  },
+  {
+    "name": "Pepper",
+    "scientific": "Capsicum annuum",
+    "family": "Solanaceae",
+    "season": "Summer",
+    "maturity_days": 80,
+    "ph_range": "6.2-7.0",
+    "local_names": {"common": "Capsicum"},
+    "tips": "Provide consistent moisture and high light levels."
+  },
+  {
+    "name": "Cucumber",
+    "scientific": "Cucumis sativus",
+    "family": "Cucurbitaceae",
+    "season": "Summer",
+    "maturity_days": 60,
+    "ph_range": "6.0-7.0",
+    "local_names": {"common": "Cucumber"},
+    "tips": "Needs regular watering and space to climb or spread."
+  },
+  {
+    "name": "Lettuce",
+    "scientific": "Lactuca sativa",
+    "family": "Asteraceae",
+    "season": "Winter",
+    "maturity_days": 45,
+    "ph_range": "6.0-7.0",
+    "local_names": {"common": "Lettuce"},
+    "tips": "Grows best in cool weather; provide partial shade in hot climates."
+  }
+]

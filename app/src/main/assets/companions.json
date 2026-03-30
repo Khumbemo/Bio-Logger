@@ -1,0 +1,26 @@
+[
+  {
+    "crop": "Rice (Upland)",
+    "companions": ["Cowpea", "Soybean", "Pumpkin"],
+    "antagonists": ["Foxtail Millet"],
+    "notes": "Legumes fix nitrogen which benefits the rice crop."
+  },
+  {
+    "crop": "Foxtail Millet",
+    "companions": ["Cowpea", "Pigeon Pea", "Sesame"],
+    "antagonists": ["Rice"],
+    "notes": "Classic jhum intercropping combo. Sesame provides ground cover."
+  },
+  {
+    "crop": "King Chili",
+    "companions": ["Taro", "Yam", "French Bean"],
+    "antagonists": ["Fennel"],
+    "notes": "Taro leaves provide necessary shade for chili peppers."
+  },
+  {
+    "crop": "Perilla",
+    "companions": ["Mustard", "Rice"],
+    "antagonists": [],
+    "notes": "Aromatic leaves can help deter certain pests."
+  }
+]

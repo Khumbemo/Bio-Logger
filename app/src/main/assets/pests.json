@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Aphids",
+    "scientific": "Aphididae",
+    "crops": "Tomato, Pepper, Lettuce, Brassicas",
+    "symptoms": "Curled leaves, sticky honeydew, stunted growth",
+    "damage": "Medium",
+    "management": "Neem oil, soap spray, ladybugs (biological control)"
+  },
+  {
+    "name": "Powdery Mildew",
+    "scientific": "Erysiphales",
+    "crops": "Cucumber, Squash, Tomato",
+    "symptoms": "White flour-like coating on leaves",
+    "damage": "High",
+    "management": "Increase airflow, sulfur spray, baking soda solution"
+  },
+  {
+    "name": "Fruit Borer",
+    "scientific": "Helicoverpa armigera",
+    "crops": "Tomato, Pepper, Corn",
+    "symptoms": "Holes in fruit, internal rot",
+    "damage": "High",
+    "management": "Bt spray, Pheromone traps, manual removal"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "month": "January",
+    "zone": "Nagaland",
+    "tasks": [
+      {"category": "Harvest", "description": "Harvest Rabi crops like Mustard and French beans."},
+      {"category": "Maintenance", "description": "Prepare jhum plots for clearing."},
+      {"category": "Planting", "description": "Start nurseries for Tree Tomato."}
+    ]
+  },
+  {
+    "month": "May",
+    "zone": "Nagaland",
+    "tasks": [
+      {"category": "Sowing", "description": "Main sowing of Upland Rice and Millets in jhum fields."},
+      {"category": "Sowing", "description": "Sow King Chili and Naga Cucumber."},
+      {"category": "Maintenance", "description": "First weeding of jhum plots."}
+    ]
+  },
+  {
+    "month": "October",
+    "zone": "Nagaland",
+    "tasks": [
+      {"category": "Sowing", "description": "Start sowing Rabi crops: Mustard, Peas, Potato."},
+      {"category": "Harvest", "description": "Begin harvest of upland rice varieties."}
+    ]
+  }
+]
