@@ -1,21 +1,20 @@
 package com.biologger
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MotionEvent
-=======
-import android.os.Bundle
-import android.view.LayoutInflater
->>>>>>> master
-import android.view.View
-import android.view.ViewGroup
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
 
+/**
+ * Note: This fragment is being replaced by ToolsFragment in the new 3-tab architecture.
+ * Keeping it for reference or as a detailed tools view if needed.
+ */
 class MainDashboardFragment : Fragment() {
 
     override fun onCreateView(
@@ -30,28 +29,9 @@ class MainDashboardFragment : Fragment() {
         val cardNotes = view.findViewById<MaterialCardView>(R.id.cardNotes)
 
         cardForest.setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_forestHomeFragment)
+            findNavController().navigate(R.id.toolsFragment) // Redirect to tools
         }
         cardForest.addPressAnimation()
-
-        cardGreenhouse.setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_greenhouseHomeFragment)
-        }
-        cardGreenhouse.addPressAnimation()
-
-        cardGarden.setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_gardenHomeFragment)
-        }
-        cardGarden.addPressAnimation()
-
-        cardNotes.setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_noteVaultHomeFragment)
-        }
-        cardNotes.addPressAnimation()
-
-        view.findViewById<View>(R.id.btnNavExport).setOnClickListener {
-            findNavController().navigate(R.id.action_mainDashboardFragment_to_exportCenterFragment)
-        }
 
         return view
     }

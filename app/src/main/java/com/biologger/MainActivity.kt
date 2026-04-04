@@ -1,14 +1,11 @@
 package com.biologger
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import android.graphics.Color
 import android.os.Build
+import android.os.Bundle
+import android.view.View
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -32,14 +29,7 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            window.isNavigationBarContrastEnforced = false
-        }
-
-        setContentView(R.layout.activity_main)
-
-<<<<<<< HEAD
+        // 1. Enable Edge-to-Edge to prevent clashing and fit perfectly
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.statusBarColor = Color.TRANSPARENT
         window.navigationBarColor = Color.TRANSPARENT
@@ -57,19 +47,22 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
 
+        // 2. Setup 3 main home pages (Home, Tools, Data)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.mainDashboardFragment)
+            setOf(R.id.homeFragment, R.id.toolsFragment, R.id.dataFragment)
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNav.setupWithNavController(navController)
 
+        // Apply insets to toolbar to avoid status bar clash
         ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, insets ->
             val top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
             view.setPadding(0, top, 0, 0)
             insets
         }
 
+        // Apply insets to bottom nav to avoid navigation bar clash
         ViewCompat.setOnApplyWindowInsetsListener(bottomNav) { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
             view.setPadding(0, 0, 0, bottom)
@@ -78,42 +71,20 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.mainDashboardFragment -> {
+                R.id.homeFragment, R.id.toolsFragment, R.id.dataFragment,
+                R.id.forestHomeFragment, R.id.greenhouseHomeFragment,
+                R.id.gardenHomeFragment, R.id.noteVaultHomeFragment -> {
                     bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundColor(Color.TRANSPARENT)
-                    toolbar.title = ""
-                    toolbar.navigationIcon = null
-                }
-                R.id.forestHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.forest_green)
-                    toolbar.title = "Forest Capture"
-                }
-                R.id.greenhouseHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.greenhouse_teal)
-                    toolbar.title = "AgroClimatic Lab"
-                }
-                R.id.gardenHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.garden_amber)
-                    toolbar.title = "Garden Scape"
-                }
-                R.id.noteVaultHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.vault_purple)
-                    toolbar.title = "Note Vault"
+                    toolbar.visibility = View.VISIBLE
                 }
                 else -> {
                     bottomNav.visibility = View.GONE
-                    toolbar.setBackgroundResource(R.color.white)
-                    toolbar.title = destination.label ?: ""
                 }
             }
         }
 
         onBackPressedDispatcher.addCallback(this) {
-            if (navController.currentDestination?.id == R.id.mainDashboardFragment) {
+            if (navController.currentDestination?.id == R.id.homeFragment) {
                 val now = System.currentTimeMillis()
                 if (now - backPressedTime < 2000) {
                     finish()
@@ -129,93 +100,6 @@ class MainActivity : AppCompatActivity() {
                 isEnabled = true
             }
         }
-=======
-        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
-
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.mainDashboardFragment)
-        )
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        bottomNav.setupWithNavController(navController)
-
-        ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, insets ->
-            val top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            view.setPadding(0, top, 0, 0)
-            insets
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(bottomNav) { view, insets ->
-            val bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            view.setPadding(0, 0, 0, bottom)
-            insets
-        }
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.mainDashboardFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundColor(Color.TRANSPARENT)
-                    toolbar.title = ""
-                    toolbar.navigationIcon = null
-                }
-                R.id.forestHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.forest_green)
-                    toolbar.title = "Forest Capture"
-                }
-                R.id.greenhouseHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.greenhouse_teal)
-                    toolbar.title = "AgroClimatic Lab"
-                }
-                R.id.gardenHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.garden_amber)
-                    toolbar.title = "Garden Scape"
-                }
-                R.id.noteVaultHomeFragment -> {
-                    bottomNav.visibility = View.VISIBLE
-                    toolbar.setBackgroundResource(R.color.vault_purple)
-                    toolbar.title = "Note Vault"
-                }
-                else -> {
-                    bottomNav.visibility = View.GONE
-                    toolbar.setBackgroundResource(R.color.white)
-                    toolbar.title = destination.label ?: ""
-                }
-            }
-        }
-
-        onBackPressedDispatcher.addCallback(this) {
-            if (navController.currentDestination?.id == R.id.mainDashboardFragment) {
-                val now = System.currentTimeMillis()
-                if (now - backPressedTime < 2000) {
-                    finish()
-                } else {
-                    backPressedTime = now
-                    Snackbar.make(findViewById(android.R.id.content), "Press back again to exit", Snackbar.LENGTH_SHORT)
-                        .setAnchorView(bottomNav)
-                        .show()
-                }
-            } else {
-                isEnabled = false
-                onBackPressedDispatcher.onBackPressed()
-                isEnabled = true
-            }
-        }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
->>>>>>> master
     }
 
     override fun onSupportNavigateUp(): Boolean {

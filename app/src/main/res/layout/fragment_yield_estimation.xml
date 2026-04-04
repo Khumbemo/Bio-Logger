@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,10 +14,18 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plot Parameters"
+            style="@style/ScientificLabel"
+            android:textColor="@color/garden_amber" />
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:hint="Crop Name">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editCrop"
@@ -51,19 +62,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Sample Measurements (for average)"
-            android:textStyle="bold" />
+            android:layout_marginTop="24dp"
+            android:text="Sample Measurements"
+            style="@style/ScientificLabel"
+            android:textColor="@color/garden_amber" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginEnd="4dp"
                 android:hint="Avg. Fruits/Plant">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editFruitsPerPlant"
@@ -72,13 +86,12 @@
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <View android:layout_width="8dp" android:layout_height="1dp" />
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="4dp"
                 android:hint="Avg. Fruit Weight (g)">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAvgFruitWeight"
@@ -88,59 +101,61 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEstimate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Estimate Yield"
-            android:backgroundTint="@color/garden_amber" />
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardResults"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="12dp"
-            app:strokeColor="@color/garden_amber"
-            app:strokeWidth="2dp"
+            style="@style/GlassCard"
             android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Estimated Yield"
-                    android:textStyle="bold" />
+                    android:textAlignment="center"
+                    style="@style/ScientificLabel" />
 
                 <TextView
                     android:id="@+id/resTotalYield"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textColor="@color/garden_amber"
-                    android:textStyle="bold" />
+                    android:textAlignment="center"
+                    style="@style/ScientificHeadline"
+                    android:textColor="@color/garden_amber" />
 
                 <TextView
                     android:id="@+id/resYieldRange"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="4dp"
+                    android:textAlignment="center"
+                    style="@style/ScientificBody" />
 
                 <TextView
                     android:id="@+id/resYieldPerArea"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textSize="12sp" />
+                    android:textAlignment="center"
+                    style="@style/ScientificLabel" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEstimate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Perform Estimation"
+            android:backgroundTint="@color/garden_amber" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

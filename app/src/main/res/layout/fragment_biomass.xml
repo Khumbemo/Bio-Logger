@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:overScrollMode="never"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,10 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tree Data"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            style="@style/ScientificLabel"
+            android:textColor="@color/forest_green" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -92,23 +91,61 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard"
-            app:strokeColor="@color/forest_green"
-            app:strokeWidth="2dp"
+            style="@style/GlassCard"
             android:visibility="gone">
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
-                android:padding="16dp">
-                <TextView android:text="AGB (kg):" android:textStyle="bold" />
-                <TextView android:id="@+id/resAgbKg" android:layout_gravity="end" />
-                <TextView android:text="AGB (Mg):" android:textStyle="bold" />
-                <TextView android:id="@+id/resAgbMg" android:layout_gravity="end" />
-                <TextView android:text="Carbon (kg C):" android:textStyle="bold" />
-                <TextView android:id="@+id/resCarbon" android:layout_gravity="end" />
-                <TextView android:text="CO₂e (kg):" android:textStyle="bold" />
-                <TextView android:id="@+id/resCo2" android:layout_gravity="end" />
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AGB (kg):"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resAgbKg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    style="@style/ScientificTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AGB (Mg):"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resAgbMg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    style="@style/ScientificTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carbon (kg C):"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resCarbon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    style="@style/ScientificTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CO₂e (kg):"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resCo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    style="@style/ScientificTitle" />
             </GridLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -126,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Clear"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/text_secondary" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

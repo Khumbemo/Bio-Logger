@@ -4,71 +4,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/surface"
     android:padding="16dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNewNote"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="New Note"
-        app:backgroundTint="#6A1B9A" />
+        android:layout_height="56dp"
+        android:text="Initiate New Record"
+        android:backgroundTint="@color/vault_purple"
+        app:cornerRadius="12dp"
+        style="@style/Widget.Material3.Button" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleSelection="true">
+            app:singleSelection="true"
+            app:selectionRequired="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipAll"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="All" />
+                android:text="All Archives" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipForest"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forest" />
+                android:text="Forestry" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipGreenhouse"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Greenhouse" />
+                android:text="AgroClimatic" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipGarden"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Garden" />
+                android:text="Horticulture" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipUnlinked"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Unlinked" />
+                android:text="Miscellaneous" />
 
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView android:overScrollMode="never" android:scrollbars="none"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Field Registry"
+        style="@style/ScientificLabel"
+        android:textColor="@color/vault_purple" />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
 
 </LinearLayout>

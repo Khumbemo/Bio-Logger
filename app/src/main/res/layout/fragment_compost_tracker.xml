@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,10 +14,18 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Batch Metadata"
+            style="@style/ScientificLabel"
+            android:textColor="@color/garden_amber" />
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:hint="Batch ID (e.g., C-2024-001)">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editBatchId"
@@ -38,9 +49,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="Temperature Log (°C)"
-            android:textStyle="bold" />
+            style="@style/ScientificLabel"
+            android:textColor="@color/garden_amber" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,6 +64,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginEnd="4dp"
                 android:hint="Current Temp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTemp"
@@ -60,13 +73,12 @@
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <View android:layout_width="8dp" android:layout_height="1dp" />
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="4dp"
                 android:hint="Ambient Temp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editAmbient"
@@ -89,29 +101,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="12dp"
-            app:strokeColor="@color/garden_amber"
-            app:strokeWidth="2dp"
+            style="@style/GlassCard"
             android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textCompostStage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/textCompostAdvice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/text_primary" />
 
                 <ProgressBar
                     android:id="@+id/progressCompost"

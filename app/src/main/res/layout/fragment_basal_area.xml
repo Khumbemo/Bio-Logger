@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/basalAreaScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:overScrollMode="never"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,10 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Plot Configuration"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            style="@style/ScientificLabel"
+            android:textColor="@color/forest_green" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -87,10 +87,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Tree Data"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            style="@style/ScientificLabel"
+            android:textColor="@color/forest_green" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerTrees"
@@ -107,30 +105,72 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            android:text="Add Tree" />
+            android:text="Add Tree Entry" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardResults"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard"
-            app:strokeColor="@color/forest_green"
-            app:strokeWidth="2dp"
+            style="@style/GlassCard"
             android:visibility="gone">
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
-                android:padding="16dp">
-                <TextView android:text="Plot BA:" android:textStyle="bold" />
-                <TextView android:id="@+id/resPlotBa" android:layout_gravity="end" />
-                <TextView android:text="BA / ha:" android:textStyle="bold" />
-                <TextView android:id="@+id/resBaHa" android:layout_gravity="end" />
-                <TextView android:text="Trees / ha:" android:textStyle="bold" />
-                <TextView android:id="@+id/resTreesHa" android:layout_gravity="end" />
-                <TextView android:text="QMD:" android:textStyle="bold" />
-                <TextView android:id="@+id/resQmd" android:layout_gravity="end" />
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plot BA:"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resPlotBa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textAlignment="viewEnd"
+                    style="@style/ScientificTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BA / ha:"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resBaHa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textAlignment="viewEnd"
+                    style="@style/ScientificTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trees / ha:"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resTreesHa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textAlignment="viewEnd"
+                    style="@style/ScientificTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QMD:"
+                    style="@style/ScientificTitle" />
+                <TextView
+                    android:id="@+id/resQmd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textAlignment="viewEnd"
+                    style="@style/ScientificTitle" />
             </GridLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -139,7 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Calculate &amp; Save"
+            android:text="Analyze &amp; Commit"
             android:backgroundTint="@color/forest_green" />
 
         <com.google.android.material.button.MaterialButton
@@ -147,8 +187,8 @@
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clear"
-            android:textColor="@android:color/darker_gray" />
+            android:text="Clear Data"
+            android:textColor="@color/text_secondary" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

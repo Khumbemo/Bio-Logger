@@ -1,19 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never" android:scrollbars="none">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Bed Name"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editName" android:layout_width="match_parent" android:layout_height="wrap_content"/></com.google.android.material.textfield.TextInputLayout>
-        <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:layout_marginTop="8dp">
-            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="4dp" android:hint="Length (m)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editL" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginStart="4dp" android:hint="Width (m)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editW" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-        </GridLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Spacing (cm)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editSpacing" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.card.MaterialCardView android:id="@+id/cardResults" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" app:cardCornerRadius="16dp" style="@style/GlassCard" app:strokeColor="@color/garden_amber" app:strokeWidth="2dp" android:visibility="gone">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                <TextView android:id="@+id/resPlants" android:textSize="18sp" android:textStyle="bold" />
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F0E8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bed Layout Planner"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1B4332"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="Bed Name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:hint="Length (m)">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:hint="Width (m)">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editW"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Spacing (cm)">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:id="@+id/resPlants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1B4332" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnCalc" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Calculate &amp; Save" android:backgroundTint="@color/garden_amber" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate &amp; Save"
+            android:backgroundTint="#1B4332" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

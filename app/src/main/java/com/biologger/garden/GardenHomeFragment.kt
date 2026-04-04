@@ -1,11 +1,11 @@
 package com.biologger.garden
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
@@ -22,7 +22,7 @@ class GardenHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_garden_home, container, false)
 
-        val cards = listOf(
+        val cardConfigs = listOf(
             R.id.cardSeasonalPlanner to R.id.action_gardenHomeFragment_to_seasonalPlannerFragment,
             R.id.cardCompanionPlanting to R.id.action_gardenHomeFragment_to_companionPlantingFragment,
             R.id.cardSoilAmendment to R.id.action_gardenHomeFragment_to_soilAmendmentFragment,
@@ -36,22 +36,24 @@ class GardenHomeFragment : Fragment() {
             R.id.cardPlanningCalendar to R.id.action_gardenHomeFragment_to_planningCalendarFragment
         )
 
-        cards.forEach { (cardId, actionId) ->
-            val card = view.findViewById<MaterialCardView>(cardId)
-            card.setOnClickListener {
-                findNavController().navigate(actionId)
+        for (config in cardConfigs) {
+            val (cardId, actionId) = config
+            view.findViewById<MaterialCardView>(cardId)?.let { card ->
+                card.setOnClickListener {
+                    findNavController().navigate(actionId)
+                }
+                card.addPressAnimation()
             }
-            card.addPressAnimation()
         }
 
-        val scrollView = view as? NestedScrollView
+        val scrollView = view.findViewById<NestedScrollView>(R.id.gardenScrollView)
         scrollView?.let { setupBottomNavHideOnScroll(it) }
 
         return view
     }
 
     private fun setupBottomNavHideOnScroll(scrollView: NestedScrollView) {
-        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav) ?: return
         var lastScrollY = 0
         scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > lastScrollY + 10) {

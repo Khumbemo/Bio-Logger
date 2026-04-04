@@ -1,16 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never" android:scrollbars="none">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Reference ET0 (mm/day)"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editEt0" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Growth Stage"><AutoCompleteTextView android:id="@+id/spinnerStage" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none"/></com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.card.MaterialCardView android:id="@+id/cardResults" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" app:cardCornerRadius="16dp" style="@style/GlassCard" app:strokeColor="@color/greenhouse_teal" app:strokeWidth="2dp" android:visibility="gone">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                <TextView android:id="@+id/resIrrigation" android:textSize="18sp" android:textStyle="bold" />
-                <TextView android:id="@+id/resInterval" android:layout_marginTop="4dp" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Irrigation Parameters"
+            style="@style/ScientificLabel"
+            android:textColor="@color/greenhouse_teal" />
+
+        <!-- ET0 Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Reference ET₀ (mm/day)">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editEt0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Growth Stage Dropdown -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Crop Growth Stage">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/spinnerStage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Generate Irrigation Plan"
+            android:backgroundTint="@color/greenhouse_teal" />
+
+        <!-- Results Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            style="@style/GlassCard"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hydraulic Analysis"
+                    style="@style/ScientificLabel"
+                    android:textColor="@color/greenhouse_teal" />
+
+                <TextView
+                    android:id="@+id/resIrrigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    style="@style/ScientificHeadline"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/resInterval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    style="@style/ScientificBody" />
+
             </LinearLayout>
+
         </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Calculate &amp; Save" android:backgroundTint="@color/greenhouse_teal" />
+
     </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>

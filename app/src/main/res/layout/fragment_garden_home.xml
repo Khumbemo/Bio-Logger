@@ -1,169 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gardenScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:overScrollMode="never"
     android:scrollbars="none"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#F5F7FA">
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="16dp"
         app:columnCount="2">
 
         <!-- Seasonal Planner -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardSeasonalPlanner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seasonal Planner" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sow and harvest dates by climate zone" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seasonal Planner" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Sow and harvest" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Companion Planting -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardCompanionPlanting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Companion Planting" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Good and bad crop pairings guide" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Companion" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Crop pairings" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Soil Amendment -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardSoilAmendment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Soil Amendment" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lime and sulfur quantity calculator" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Soil pH" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Amendments" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Bed Layout Planner -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBedLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bed Layout Planner" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Spacing, rows and plant count estimator" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bed Layout" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Spacing and rows" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Watering Schedule -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardWateringSchedule"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Watering Schedule" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Water needs by crop, stage and weather" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Watering" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Schedule and stage" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Composting Tracker -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardCompostTracker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Composting Tracker" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track compost stages and temperature" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Composting" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Track stages" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Pest Identifier -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPestId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pest Identifier" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Log and identify common garden pests" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pest ID" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Identification" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Yield Recorder -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardYieldRecorder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yield Recorder" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Record harvest weight and quality" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yield Log" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Harvest weights" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Yield Estimation -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardYieldEstimation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yield Estimation" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Predict yield before harvest" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Estimation" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Pre-harvest prediction" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Plant Wiki -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPlantWiki"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plant Wiki" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Browse crop profiles and care guides" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plant Wiki" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Care guides" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Planning Calendar -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPlanningCalendar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_columnWeight="1"
             android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Planning Calendar" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Monthly task and sowing calendar" android:textSize="12sp" />
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E1E3E8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calendar" android:textStyle="bold" android:textColor="#1A1C1E" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Monthly tasks" android:textSize="12sp" android:textColor="#606368" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

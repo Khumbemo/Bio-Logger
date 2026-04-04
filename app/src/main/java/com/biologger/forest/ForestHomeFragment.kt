@@ -1,18 +1,21 @@
 package com.biologger.forest
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.fragment.findNavController
-import com.biologger.MainActivity
 import com.biologger.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
 class ForestHomeFragment : Fragment() {
@@ -23,39 +26,46 @@ class ForestHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_forest_home, container, false)
 
-        val cards = listOf(
+        // 1. Initialize Survey Site Spinner
+        val spinnerSite = view.findViewById<Spinner>(R.id.spinnerSite)
+        val sites = listOf("North Plot A", "East Boundary", "Riparian Zone", "High Altitude Ridge")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sites)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerSite.adapter = adapter
+
+        // 2. Setup Tool Cards
+        val cardConfigs = listOf(
             R.id.cardTreeMeasurement to R.id.action_forestHomeFragment_to_treeMeasurementFragment,
             R.id.cardBasalArea to R.id.action_forestHomeFragment_to_basalAreaFragment,
             R.id.cardStandDensity to R.id.action_forestHomeFragment_to_standDensityFragment,
-            R.id.cardTimberVolume to R.id.action_forestHomeFragment_to_timberVolumeFragment,
             R.id.cardBiomass to R.id.action_forestHomeFragment_to_biomassFragment,
-            R.id.cardTreeHealth to R.id.action_forestHomeFragment_to_treeHealthFragment,
-            R.id.cardCrownCover to R.id.action_forestHomeFragment_to_crownCoverFragment,
-            R.id.cardLitterfall to R.id.action_forestHomeFragment_to_litterfallFragment,
-            R.id.cardQuadratStudies to R.id.action_forestHomeFragment_to_quadratStudiesFragment,
-            R.id.cardTransectStudies to R.id.action_forestHomeFragment_to_transectStudiesFragment,
             R.id.cardGpsAndMapping to R.id.action_forestHomeFragment_to_gpsAndMappingFragment,
-            R.id.cardEnvironmentalVariables to R.id.action_forestHomeFragment_to_environmentalVariablesFragment,
-            R.id.cardDisturbanceIndex to R.id.action_forestHomeFragment_to_disturbanceIndexFragment,
-            R.id.cardDigitalHerbarium to R.id.action_forestHomeFragment_to_digitalHerbariumFragment
+            R.id.cardDisturbanceIndex to R.id.action_forestHomeFragment_to_disturbanceIndexFragment
         )
 
-        cards.forEach { (cardId, actionId) ->
-            val card = view.findViewById<MaterialCardView>(cardId)
-            card.setOnClickListener {
-                findNavController().navigate(actionId)
+        for (config in cardConfigs) {
+            val (cardId, actionId) = config
+            view.findViewById<MaterialCardView>(cardId)?.let { card ->
+                card.setOnClickListener {
+                    findNavController().navigate(actionId)
+                }
+                card.addPressAnimation()
             }
-            card.addPressAnimation()
         }
 
-        val scrollView = view as? NestedScrollView
+        // 3. Setup Submit Button
+        view.findViewById<MaterialButton>(R.id.btnSubmitContext).setOnClickListener {
+            Toast.makeText(requireContext(), "Survey context locked for session", Toast.LENGTH_SHORT).show()
+        }
+
+        val scrollView = view.findViewById<NestedScrollView>(R.id.forestScrollView)
         scrollView?.let { setupBottomNavHideOnScroll(it) }
 
         return view
     }
 
     private fun setupBottomNavHideOnScroll(scrollView: NestedScrollView) {
-        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav) ?: return
         var lastScrollY = 0
         scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > lastScrollY + 10) {

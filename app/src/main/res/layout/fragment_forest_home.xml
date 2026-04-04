@@ -1,213 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/forestScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:overScrollMode="never"
     android:scrollbars="none"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#F5F7FA">
 
-    <androidx.gridlayout.widget.GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        app:columnCount="2">
+        android:orientation="vertical">
 
-        <!-- Tree Measurement -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardTreeMeasurement"
-            android:layout_width="0dp"
+        <!-- Banner Image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:src="@drawable/ic_forest"
+            android:scaleType="centerInside"
+            android:padding="32dp"
+            android:background="@color/forest_green"
+            android:contentDescription="Forest Header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tree Measurement" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Height, DBH and crown diameter" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <!-- Basal Area -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardBasalArea"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Basal Area" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot-level basal area calculator" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Survey Configuration"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/onSurface"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1" />
 
-        <!-- Stand Density -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardStandDensity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stand Density" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SDI and competition index" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <!-- Project ID Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editSurveyProject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Project Code (e.g. FOR-2024)" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Timber Volume -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardTimberVolume"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Timber Volume" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Huber and Smalian formulas" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <!-- Site Spinner -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Research Site / Compartment"
+                android:textSize="12sp"
+                android:textColor="#606368" />
+            <Spinner
+                android:id="@+id/spinnerSite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:minHeight="48dp" />
 
-        <!-- Biomass Estimator -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardBiomass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biomass Estimator" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AGB, carbon stock and CO2" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E3E8"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"/>
 
-        <!-- Tree Health Log -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardTreeHealth"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tree Health Log" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Record tree health observations" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available Tools"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/onSurface"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1" />
 
-        <!-- Crown Cover -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardCrownCover"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Crown Cover" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Canopy and crown assessment" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:columnCount="2">
 
-        <!-- Litterfall Log -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardLitterfall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Litterfall Log" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Collect and record litterfall data" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <!-- Tree Measurement -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardTreeMeasurement"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E1E3E8"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tree Data" android:textStyle="bold" android:textColor="#1A1C1E" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Height/DBH" android:textSize="12sp" android:textColor="#606368" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <!-- Quadrat Studies -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardQuadratStudies"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Quadrat Studies" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Species count and density per quadrat" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <!-- Basal Area -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBasalArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E1E3E8"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Basal Area" android:textStyle="bold" android:textColor="#1A1C1E" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot calc" android:textSize="12sp" android:textColor="#606368" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <!-- Transect Studies -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardTransectStudies"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Transect Studies" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Line and belt transect data entry" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <!-- Stand Density -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardStandDensity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E1E3E8"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Density" android:textStyle="bold" android:textColor="#1A1C1E" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SDI metrics" android:textSize="12sp" android:textColor="#606368" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <!-- GPS and Mapping -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardGpsAndMapping"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPS and Mapping" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Record coordinates and map plots" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <!-- Biomass Estimator -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBiomass"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E1E3E8"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biomass" android:textStyle="bold" android:textColor="#1A1C1E" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carbon log" android:textSize="12sp" android:textColor="#606368" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <!-- Environmental Variables -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardEnvironmentalVariables"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Environmental Variables" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Temperature, humidity, light and soil" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <!-- GPS and Mapping -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardGpsAndMapping"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E1E3E8"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPS Map" android:textStyle="bold" android:textColor="#1A1C1E" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot mapping" android:textSize="12sp" android:textColor="#606368" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <!-- Disturbance Index -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardDisturbanceIndex"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disturbance Index" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Composite burning and disturbance score" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                <!-- Disturbance Index -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDisturbanceIndex"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#E1E3E8"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disturbance" android:textStyle="bold" android:textColor="#1A1C1E" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fire/Scoring" android:textSize="12sp" android:textColor="#606368" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <!-- Digital Herbarium -->
-        <com.google.android.material.card.MaterialCardView android:foreground="@drawable/ripple_card" android:clickable="true" android:focusable="true"
-            android:id="@+id/cardDigitalHerbarium"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp" style="@style/GlassCard">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Digital Herbarium" android:textStyle="bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Photo capture and specimen records" android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            </androidx.gridlayout.widget.GridLayout>
 
-    </androidx.gridlayout.widget.GridLayout>
+            <!-- Submit/Save Configuration -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubmitContext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Lock Survey Context"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

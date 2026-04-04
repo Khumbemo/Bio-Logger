@@ -1,77 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView android:overScrollMode="never" android:scrollbars="none" android:fillViewport="true" xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <EditText
             android:id="@+id/textDetailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:hint="Note Title"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:hint="Record Title"
+            style="@style/ScientificHeadline"
+            android:paddingBottom="8dp" />
 
         <TextView
             android:id="@+id/textDetailDate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:text="Date Created/Modified"
-            android:textSize="12sp"
-            android:textColor="@android:color/darker_gray" />
+            style="@style/ScientificLabel"
+            android:textColor="#606368" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipDetailModule"
-            style="@style/Widget.MaterialComponents.Chip.Action"
+            style="@style/Widget.Material3.Chip.Suggestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:clickable="false"
             android:text="Module" />
 
         <TextView
             android:id="@+id/textDetailLinkedTool"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Linked tool: None"
-            android:textSize="14sp" />
+            android:layout_marginTop="8dp"
+            android:text="Method: None"
+            style="@style/ScientificBody" />
 
         <TextView
             android:id="@+id/textDetailLocation"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="GPS: Not set"
-            android:textSize="14sp" />
+            style="@style/ScientificBody" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginVertical="24dp" />
 
         <EditText
             android:id="@+id/editDetailBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@null"
             android:gravity="top"
-            android:hint="Full note body..."
+            android:hint="Investigation findings..."
+            style="@style/ScientificBody"
+            android:textColor="@color/onSurface"
             android:inputType="textMultiLine"
             android:minLines="10" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Photo Gallery"
-            android:textStyle="bold" />
+            android:layout_marginTop="32dp"
+            android:text="Data Assets"
+            style="@style/ScientificLabel"
+            android:textColor="@color/vault_purple" />
 
-        <androidx.recyclerview.widget.RecyclerView android:overScrollMode="never" android:scrollbars="none"
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerDetailPhotos"
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -80,42 +91,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDetailTakePhoto"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:text="Take Photo" />
+                android:text="Capture" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDetailAddPhoto"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="Add Photo" />
+                android:text="Import" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveChanges"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Save Changes" />
+            android:layout_marginTop="40dp"
+            android:text="Commit Changes"
+            android:backgroundTint="@color/vault_purple" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDeleteNote"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete Note"
-            android:textColor="@android:color/holo_red_dark" />
+            android:text="Purge Record"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mainDashboardFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/forestHomeFragment"
-        android:icon="@drawable/ic_forest"
-        android:title="Forest" />
+        android:id="@+id/toolsFragment"
+        android:icon="@drawable/ic_tools"
+        android:title="Tools" />
     <item
-        android:id="@+id/greenhouseHomeFragment"
-        android:icon="@drawable/ic_greenhouse"
-        android:title="Greenhouse" />
-    <item
-        android:id="@+id/gardenHomeFragment"
-        android:icon="@drawable/ic_garden"
-        android:title="Garden" />
-    <item
-        android:id="@+id/noteVaultHomeFragment"
-        android:icon="@drawable/ic_notes"
-        android:title="Notes" />
+        android:id="@+id/dataFragment"
+        android:icon="@drawable/ic_data"
+        android:title="Data" />
 </menu>

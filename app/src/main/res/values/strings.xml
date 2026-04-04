@@ -1,3 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bio Logger</string>
+
+    <!-- Home Fragment -->
+    <string name="field_status">Field Status</string>
+    <string name="telemetry_desc">Live telemetry from your field sensors</string>
+    <string name="label_location">Location</string>
+    <string name="label_temperature">Temperature</string>
+    <string name="label_altitude">Altitude</string>
+    <string name="label_humidity">Humidity</string>
+
+    <!-- Tools Fragment -->
+    <string name="research_tools">Research Tools</string>
+    <string name="select_module">Select a module to begin</string>
+    <string name="forest_capture">Forest Capture</string>
+    <string name="forest_desc">Log and analyze forest cover data</string>
+    <string name="agro_climatic_lab">Agro-Climatic Lab</string>
+    <string name="agro_desc">Analyze agro-climatic conditions</string>
+    <string name="garden_scape">Garden Scape</string>
+    <string name="garden_desc">Manage your garden and crops</string>
+    <string name="note_vault">Note Vault</string>
+    <string name="note_desc">Scientific observations and field notes</string>
+
+    <!-- Irrigation Scheduler -->
+    <string name="title_irrigation_scheduler">Irrigation Scheduler</string>
+    <string name="hint_et0">Reference ET₀ (mm/day)</string>
+    <string name="hint_growth_stage">Growth Stage</string>
+    <string name="btn_calculate_save">Calculate &amp; Save</string>
+    <string name="label_results">Results</string>
+    <string name="label_etc_format">ETc: %.2f mm/day</string>
+    <string name="label_recommended_interval">Recommended: Every 3 days</string>
+    <string name="toast_irrigation_saved">Irrigation plan saved</string>
+
 </resources>

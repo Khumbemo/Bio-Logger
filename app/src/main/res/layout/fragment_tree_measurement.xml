@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:overScrollMode="never"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,10 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Plot and Observer"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            style="@style/ScientificLabel"
+            android:textColor="@color/forest_green" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,10 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Tree Details"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            style="@style/ScientificLabel"
+            android:textColor="@color/forest_green" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -197,7 +194,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Clear"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/text_secondary" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

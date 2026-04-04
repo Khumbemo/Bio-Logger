@@ -1,11 +1,11 @@
 package com.biologger.greenhouse
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
@@ -22,25 +22,15 @@ class GreenhouseHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_greenhouse_home, container, false)
 
-        val cards = listOf(
-            R.id.cardPotExperiment to R.id.action_greenhouseHomeFragment_to_potExperimentFragment,
-            R.id.cardPotLogger to R.id.action_greenhouseHomeFragment_to_potExperimentLoggerFragment,
-            R.id.cardClimateLog to R.id.action_greenhouseHomeFragment_to_climateLogFragment,
-            R.id.cardGerminationTracker to R.id.action_greenhouseHomeFragment_to_germinationTrackerFragment,
-            R.id.cardFertilizerCalculator to R.id.action_greenhouseHomeFragment_to_fertilizerCalculatorFragment,
-            R.id.cardIrrigationScheduler to R.id.action_greenhouseHomeFragment_to_irrigationSchedulerFragment,
-            R.id.cardPestDisease to R.id.action_greenhouseHomeFragment_to_pestDiseaseLogFragment,
-            R.id.cardHarvestRecorder to R.id.action_greenhouseHomeFragment_to_harvestRecorderFragment,
-            R.id.cardGrowthRate to R.id.action_greenhouseHomeFragment_to_growthRateFragment
-        )
-
-        cards.forEach { (cardId, actionId) ->
-            val card = view.findViewById<MaterialCardView>(cardId)
-            card.setOnClickListener {
-                findNavController().navigate(actionId)
-            }
-            card.addPressAnimation()
-        }
+        setupCard(view, R.id.cardPotExperiment, R.id.action_greenhouseHomeFragment_to_potExperimentFragment)
+        setupCard(view, R.id.cardPotLogger, R.id.action_greenhouseHomeFragment_to_potExperimentLoggerFragment)
+        setupCard(view, R.id.cardClimateLog, R.id.action_greenhouseHomeFragment_to_climateLogFragment)
+        setupCard(view, R.id.cardGerminationTracker, R.id.action_greenhouseHomeFragment_to_germinationTrackerFragment)
+        setupCard(view, R.id.cardFertilizerCalculator, R.id.action_greenhouseHomeFragment_to_fertilizerCalculatorFragment)
+        setupCard(view, R.id.cardIrrigationScheduler, R.id.action_greenhouseHomeFragment_to_irrigationSchedulerFragment)
+        setupCard(view, R.id.cardPestDisease, R.id.action_greenhouseHomeFragment_to_pestDiseaseLogFragment)
+        setupCard(view, R.id.cardHarvestRecorder, R.id.action_greenhouseHomeFragment_to_harvestRecorderFragment)
+        setupCard(view, R.id.cardGrowthRate, R.id.action_greenhouseHomeFragment_to_growthRateFragment)
 
         val scrollView = view as? NestedScrollView
         scrollView?.let { setupBottomNavHideOnScroll(it) }
@@ -48,8 +38,17 @@ class GreenhouseHomeFragment : Fragment() {
         return view
     }
 
+    private fun setupCard(root: View, cardId: Int, actionId: Int) {
+        root.findViewById<MaterialCardView>(cardId)?.let { card ->
+            card.setOnClickListener {
+                findNavController().navigate(actionId)
+            }
+            card.addPressAnimation()
+        }
+    }
+
     private fun setupBottomNavHideOnScroll(scrollView: NestedScrollView) {
-        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav) ?: return
         var lastScrollY = 0
         scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > lastScrollY + 10) {
