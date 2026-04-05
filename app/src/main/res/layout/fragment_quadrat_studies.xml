@@ -1,151 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="@color/surface">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Plot Parameters"
-            style="@style/ScientificLabel"
-            android:textColor="@color/forest_green" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Plot Parameters"
+ style="@style/ScientificLabel"
+ android:textColor="@color/forest_green" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Plot ID">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPlotId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Plot ID">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editPlotId"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="4dp"
-                android:hint="Quadrat ID">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editQuadratId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:hint="Size (m side)">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:layout_marginTop="8dp">
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:layout_marginEnd="4dp"
+ android:hint="Quadrat ID">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editQuadratId"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:layout_marginStart="4dp"
+ android:hint="Size (m side)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editSize"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
+ </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Species Data"
-            android:layout_marginTop="24dp"
-            style="@style/ScientificLabel"
-            android:textColor="@color/forest_green" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Species Data"
+ android:layout_marginTop="24dp"
+ style="@style/ScientificLabel"
+ android:textColor="@color/forest_green" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSpecies"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="8dp" />
+ <androidx.recyclerview.widget.RecyclerView
+ android:id="@+id/recyclerSpecies"
+ android:layout_width="match_parent"
+ android:layout_height="250dp"
+ android:layout_marginTop="8dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddSpecies"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="Add Species" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnAddSpecies"
+ style="@style/Widget.Material3.Button.OutlinedButton"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_gravity="center_horizontal"
+ android:layout_marginTop="8dp"
+ android:text="Add Species" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResults"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            style="@style/GlassCard"
-            android:visibility="gone">
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:padding="20dp">
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardResults"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ style="@style/GlassCard"
+ android:visibility="gone">
+ <GridLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:columnCount="2"
+ android:padding="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Species Richness:"
-                    style="@style/ScientificTitle" />
-                <TextView
-                    android:id="@+id/resRichness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    style="@style/ScientificTitle" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Species Richness:"
+ style="@style/ScientificTitle" />
+ <TextView
+ android:id="@+id/resRichness"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_gravity="end"
+ style="@style/ScientificTitle" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Shannon Index (H'):"
-                    style="@style/ScientificTitle" />
-                <TextView
-                    android:id="@+id/resShannon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    style="@style/ScientificTitle" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Shannon Index (H'):"
+ style="@style/ScientificTitle" />
+ <TextView
+ android:id="@+id/resShannon"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_gravity="end"
+ style="@style/ScientificTitle" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Simpson Index (D):"
-                    style="@style/ScientificTitle" />
-                <TextView
-                    android:id="@+id/resSimpson"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    style="@style/ScientificTitle" />
-            </GridLayout>
-        </com.google.android.material.card.MaterialCardView>
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Simpson Index (D):"
+ style="@style/ScientificTitle" />
+ <TextView
+ android:id="@+id/resSimpson"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_gravity="end"
+ style="@style/ScientificTitle" />
+ </GridLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCalculate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Calculate &amp; Save"
-            android:backgroundTint="@color/forest_green" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnCalculate"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Calculate &amp; Save"
+ android:backgroundTint="@color/forest_green" />
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

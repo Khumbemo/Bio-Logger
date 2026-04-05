@@ -81,7 +81,7 @@ class TransectStudiesFragment : Fragment() {
         return view
     }
 
-    class EncounterAdapter(private val list: List<Encounter>) : RecyclerView.Adapter<EncounterAdapter.VH>() {
+    class EncounterAdapter(private val list: MutableList<Encounter>) : RecyclerView.Adapter<EncounterAdapter.VH>() {
         class VH(v: View) : RecyclerView.ViewHolder(v) {
             val name: TextInputEditText = v.findViewById(R.id.editSpecName)
             val count: TextInputEditText = v.findViewById(R.id.editSpecCount)
@@ -93,9 +93,20 @@ class TransectStudiesFragment : Fragment() {
         }
         override fun onBindViewHolder(holder: VH, position: Int) {
             val item = list[position]
-            holder.name.setText(item.species); holder.count.setText(if (item.count > 0) item.count.toString() else "")
-            holder.name.setOnFocusChangeListener { _, h -> if(!h) item.species = holder.name.text.toString() }
-            holder.count.setOnFocusChangeListener { _, h -> if(!h) item.count = holder.count.text.toString().toIntOrNull() ?: 0 }
+            holder.name.setText(item.species)
+            holder.count.setText(if (item.count > 0) item.count.toString() else "")
+            holder.name.setOnFocusChangeListener { _, h -> if (!h) item.species = holder.name.text.toString() }
+            holder.count.setOnFocusChangeListener { _, h -> if (!h) item.count = holder.count.text.toString().toIntOrNull() ?: 0 }
+
+            val removeBtn = holder.itemView.findViewById<android.widget.ImageButton>(R.id.btnRemoveRow)
+            removeBtn?.visibility = View.VISIBLE
+            removeBtn?.setOnClickListener {
+                val currentPos = holder.bindingAdapterPosition
+                if (currentPos != RecyclerView.NO_POSITION) {
+                    list.removeAt(currentPos)
+                    notifyItemRemoved(currentPos)
+                }
+            }
         }
         override fun getItemCount() = list.size
     }

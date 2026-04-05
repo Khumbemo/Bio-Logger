@@ -1,81 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="@color/surface">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Temporal Analysis"
-            style="@style/ScientificLabel"
-            android:textColor="@color/garden_amber" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Temporal Analysis"
+ style="@style/ScientificLabel"
+ android:textColor="@color/garden_amber" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Climate Zone">
-            <AutoCompleteTextView
-                android:id="@+id/spinnerZone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Climate Zone">
+ <AutoCompleteTextView
+ android:id="@+id/spinnerZone"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="none" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Sowing / Initiation Date">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:clickable="true" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="12dp"
+ android:hint="Sowing / Initiation Date">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editDate"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:focusable="false"
+ android:clickable="true" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Generate Cultivation Plan"
-            android:backgroundTint="@color/garden_amber" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnSave"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Generate Cultivation Plan"
+ android:backgroundTint="@color/garden_amber" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResults"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            style="@style/GlassCard"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-                <TextView
-                    android:id="@+id/resPlan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/ScientificBody"
-                    android:textColor="@color/text_primary" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardResults"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ style="@style/GlassCard"
+ android:visibility="gone">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="20dp">
+ <TextView
+ android:id="@+id/resPlan"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ style="@style/ScientificBody"
+ android:textColor="@color/text_primary" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

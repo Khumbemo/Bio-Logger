@@ -61,6 +61,7 @@ class StandDensityFragment : Fragment() {
             view.findViewById<TextView>(R.id.resRdPercent).text = "Relative Density: %.1f%%".format(rd)
             view.findViewById<View>(R.id.viewZoneIndicator).setBackgroundColor(color)
             view.findViewById<TextView>(R.id.resZoneLabel).text = zone
+            view.findViewById<TextView>(R.id.resInterpretation).text = "Density category: $zone"
             cardResults.visibility = View.VISIBLE
 
             viewModel.insertStandDensity(StandDensityResult(

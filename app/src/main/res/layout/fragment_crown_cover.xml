@@ -1,141 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="#F5F7FA">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Plot ID">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPlotId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:hint="Plot ID">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editPlotId"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Method">
-            <AutoCompleteTextView
-                android:id="@+id/spinnerMethod"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ android:hint="Method">
+ <AutoCompleteTextView
+ android:id="@+id/spinnerMethod"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="none" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Point Intercept Section -->
-        <LinearLayout
-            android:id="@+id/layoutPointIntercept"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Total Points Sampled">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTotalPoints"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Points with Canopy Hit">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editHitPoints"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+ <!-- Point Intercept Section -->
+ <LinearLayout
+ android:id="@+id/layoutPointIntercept"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:visibility="gone">
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ android:hint="Total Points Sampled">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editTotalPoints"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="number" />
+ </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Points with Canopy Hit">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editHitPoints"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="number" />
+ </com.google.android.material.textfield.TextInputLayout>
+ </LinearLayout>
 
-        <!-- Densiometer Section -->
-        <LinearLayout
-            android:id="@+id/layoutDensiometer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Densiometer Readings (0-96)"
-                android:layout_marginTop="16dp"
-                android:textStyle="bold"
-                android:textColor="@color/onSurface" />
-            <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:layout_marginTop="8dp">
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="4dp" android:hint="R1"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR1" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginStart="4dp" android:hint="R2"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR2" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="4dp" android:layout_marginTop="8dp" android:hint="R3"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR3" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginStart="4dp" android:layout_marginTop="8dp" android:hint="R4"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR4" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
-            </GridLayout>
-        </LinearLayout>
+ <!-- Densiometer Section -->
+ <LinearLayout
+ android:id="@+id/layoutDensiometer"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:visibility="gone">
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Densiometer Readings (0-96)"
+ android:layout_marginTop="16dp"
+ android:textStyle="bold"
+ android:textColor="@color/onSurface" />
+ <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:layout_marginTop="8dp">
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="4dp" android:hint="R1"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR1" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginStart="4dp" android:hint="R2"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR2" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="4dp" android:layout_marginTop="8dp" android:hint="R3"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR3" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginStart="4dp" android:layout_marginTop="8dp" android:hint="R4"><com.google.android.material.textfield.TextInputEditText android:id="@+id/editR4" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/></com.google.android.material.textfield.TextInputLayout>
+ </GridLayout>
+ </LinearLayout>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResults"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E1E3E8"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-                <TextView
-                    android:id="@+id/resCoverPercent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_primary" />
-                <TextView
-                    android:id="@+id/resLightCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/text_primary" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardResults"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ app:cardCornerRadius="20dp"
+ app:cardElevation="0dp"
+ app:strokeWidth="1dp"
+ app:strokeColor="#E1E3E8"
+ android:visibility="gone">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="20dp">
+ <TextView
+ android:id="@+id/resCoverPercent"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:textSize="24sp"
+ android:textStyle="bold"
+ android:layout_gravity="center_horizontal"
+ android:textAlignment="center"
+ android:textColor="@color/text_primary" />
+ <TextView
+ android:id="@+id/resLightCategory"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_gravity="center_horizontal"
+ android:textAlignment="center"
+ android:textStyle="bold"
+ android:layout_marginTop="4dp"
+ android:textColor="@color/text_primary" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Calculate &amp; Save"
-            android:backgroundTint="@color/forest_green" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnSave"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Calculate &amp; Save"
+ android:backgroundTint="@color/forest_green" />
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

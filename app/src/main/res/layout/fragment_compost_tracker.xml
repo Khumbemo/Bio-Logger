@@ -1,140 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="@color/surface">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Batch Metadata"
-            style="@style/ScientificLabel"
-            android:textColor="@color/garden_amber" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Batch Metadata"
+ style="@style/ScientificLabel"
+ android:textColor="@color/garden_amber" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Batch ID (e.g., C-2024-001)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editBatchId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Batch ID (e.g., C-2024-001)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editBatchId"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="C:N Ratio Estimate">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editCnRatio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="C:N Ratio Estimate">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editCnRatio"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Temperature Log (°C)"
-            style="@style/ScientificLabel"
-            android:textColor="@color/garden_amber" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Temperature Log (°C)"
+ style="@style/ScientificLabel"
+ android:textColor="@color/garden_amber" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="4dp"
-                android:hint="Current Temp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTemp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:orientation="horizontal">
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:layout_marginEnd="4dp"
+ android:hint="Current Temp">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editTemp"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:hint="Ambient Temp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editAmbient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:layout_marginStart="4dp"
+ android:hint="Ambient Temp">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editAmbient"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
+ </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Log Observation"
-            android:backgroundTint="@color/garden_amber" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnLog"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Log Observation"
+ android:backgroundTint="@color/garden_amber" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            style="@style/GlassCard"
-            android:visibility="gone">
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardStatus"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ style="@style/GlassCard"
+ android:visibility="gone">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/textCompostStage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
+ <TextView
+ android:id="@+id/textCompostStage"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:textSize="18sp"
+ android:textStyle="bold"
+ android:textColor="@color/text_primary" />
 
-                <TextView
-                    android:id="@+id/textCompostAdvice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/text_primary" />
+ <TextView
+ android:id="@+id/textCompostAdvice"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:textColor="@color/text_primary" />
 
-                <ProgressBar
-                    android:id="@+id/progressCompost"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:progressTint="@color/garden_amber" />
+ <ProgressBar
+ android:id="@+id/progressCompost"
+ style="?android:attr/progressBarStyleHorizontal"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ android:progressTint="@color/garden_amber" />
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

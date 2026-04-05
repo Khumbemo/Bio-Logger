@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="16dp" style="@style/GlassCard"
-    app:cardElevation="0dp"
-    app:strokeColor="#DDDDDD"
-    app:strokeWidth="1dp">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_margin="4dp"
+ app:cardCornerRadius="16dp" style="@style/GlassCard"
+ app:cardElevation="0dp"
+ app:strokeColor="#DDDDDD"
+ app:strokeWidth="1dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:gravity="center_vertical">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:padding="8dp"
+ android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/textPotId"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:textStyle="bold" />
+ <TextView
+ android:id="@+id/textPotId"
+ android:layout_width="80dp"
+ android:layout_height="wrap_content"
+ android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Height (cm)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPotHeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:hint="Height (cm)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editPotHeight"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal"
+ android:textSize="12sp" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <View android:layout_width="8dp" android:layout_height="1dp" />
+ <View android:layout_width="8dp" android:layout_height="1dp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Leaves">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPotLeaves"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:hint="Leaves">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editPotLeaves"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="number"
+ android:textSize="12sp" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+ </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

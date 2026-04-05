@@ -50,7 +50,9 @@ class LitterfallFragment : Fragment() {
             cardResults.visibility = View.VISIBLE
 
             viewModel.insertLitterfall(LitterfallRecord(
-                plotId = editPlotId.text.toString(), trapId = "", trapArea = area,
+                plotId = editPlotId.text.toString(),
+                trapId = view.findViewById<TextInputEditText>(R.id.editTrapId).text.toString(),
+                trapArea = area,
                 date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()),
                 intervalDays = interval, fractionMassesJson = "", moistureCorrection = 0.85,
                 totalDryMass = dry, rate = rate, annualFluxG = rate * 365.0, annualFluxMg = rate * 3.65,

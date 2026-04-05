@@ -1,157 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="@color/surface">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Input Parameters"
-            style="@style/ScientificLabel"
-            android:textColor="@color/forest_green" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Input Parameters"
+ style="@style/ScientificLabel"
+ android:textColor="@color/forest_green" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Plot ID">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPlotId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Plot ID">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editPlotId"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Trees per Hectare (N/ha)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTreesHa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Trees per Hectare (N/ha)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editTreesHa"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Quadratic Mean Diameter (cm)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editQmd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Quadratic Mean Diameter (cm)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editQmd"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Species Group">
-            <AutoCompleteTextView
-                android:id="@+id/spinnerSpeciesGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Species Group">
+ <AutoCompleteTextView
+ android:id="@+id/spinnerSpeciesGroup"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="none" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Max SDI (reference)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editMaxSdi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Max SDI (reference)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editMaxSdi"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResults"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            style="@style/GlassCard"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardResults"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ style="@style/GlassCard"
+ android:visibility="gone">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/resSdiValue"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    style="@style/ScientificHeadline" />
+ <TextView
+ android:id="@+id/resSdiValue"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:textAlignment="center"
+ style="@style/ScientificHeadline" />
 
-                <TextView
-                    android:id="@+id/resRdPercent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    style="@style/ScientificBody" />
+ <TextView
+ android:id="@+id/resRdPercent"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:textAlignment="center"
+ style="@style/ScientificBody" />
 
-                <View
-                    android:id="@+id/viewZoneIndicator"
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/divider" />
+ <View
+ android:id="@+id/viewZoneIndicator"
+ android:layout_width="match_parent"
+ android:layout_height="8dp"
+ android:layout_marginTop="16dp"
+ android:background="@color/divider" />
 
-                <TextView
-                    android:id="@+id/resZoneLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textAlignment="center"
-                    style="@style/ScientificTitle" />
+ <TextView
+ android:id="@+id/resZoneLabel"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:textAlignment="center"
+ style="@style/ScientificTitle" />
 
-                <TextView
-                    android:id="@+id/resInterpretation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textAlignment="center"
-                    style="@style/ScientificBody" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+ <TextView
+ android:id="@+id/resInterpretation"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="4dp"
+ android:textAlignment="center"
+ style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCalculateSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Calculate &amp; Save"
-            android:backgroundTint="@color/forest_green" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnCalculateSave"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Calculate &amp; Save"
+ android:backgroundTint="@color/forest_green" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnClear"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Clear"
-            android:textColor="@color/text_secondary" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnClear"
+ style="@style/Widget.Material3.Button.TextButton"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:text="Clear"
+ android:textColor="@color/text_secondary" />
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

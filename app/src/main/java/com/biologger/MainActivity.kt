@@ -31,11 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         // 1. Enable Edge-to-Edge to prevent clashing and fit perfectly
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.statusBarColor = Color.TRANSPARENT
-        window.navigationBarColor = Color.TRANSPARENT
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            window.isNavigationBarContrastEnforced = false
-        }
 
         setContentView(R.layout.activity_main)
 

@@ -1,194 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="#F5F7FA">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Identification"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Identification"
+ android:textAllCaps="true"
+ android:textColor="@color/forest_green"
+ android:textSize="12sp"
+ android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Tree ID">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTreeId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Tree ID">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editTreeId"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Species">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editSpecies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Species">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editSpecies"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Health Status"
-            android:textAllCaps="true"
-            android:textColor="@color/forest_green"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Health Status"
+ android:textAllCaps="true"
+ android:textColor="@color/forest_green"
+ android:textSize="12sp"
+ android:textStyle="bold" />
 
-        <RadioGroup
-            android:id="@+id/radioHealthStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioHealthy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Healthy"
-                android:checked="true" />
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioStressed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Stressed" />
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioDeclining"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.2"
-                android:text="Declining" />
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioDead"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Dead" />
-        </RadioGroup>
+ <RadioGroup
+ android:id="@+id/radioHealthStatus"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:orientation="horizontal">
+ <com.google.android.material.radiobutton.MaterialRadioButton
+ android:id="@+id/radioHealthy"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Healthy"
+ android:checked="true" />
+ <com.google.android.material.radiobutton.MaterialRadioButton
+ android:id="@+id/radioStressed"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Stressed" />
+ <com.google.android.material.radiobutton.MaterialRadioButton
+ android:id="@+id/radioDeclining"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1.2"
+ android:text="Declining" />
+ <com.google.android.material.radiobutton.MaterialRadioButton
+ android:id="@+id/radioDead"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Dead" />
+ </RadioGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Damage Severity (1-5)"
-            android:textSize="14sp" />
-        <com.google.android.material.slider.Slider
-            android:id="@+id/sliderSeverity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="1.0"
-            android:valueTo="5.0"
-            android:stepSize="1.0"
-            android:value="1.0" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ android:text="Damage Severity (1-5)"
+ android:textSize="14sp" />
+ <com.google.android.material.slider.Slider
+ android:id="@+id/sliderSeverity"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:valueFrom="1.0"
+ android:valueTo="5.0"
+ android:stepSize="1.0"
+ android:value="1.0" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Crown Dieback (%)"
-            android:textSize="14sp" />
-        <com.google.android.material.slider.Slider
-            android:id="@+id/sliderDieback"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="0.0"
-            android:valueTo="100.0"
-            android:stepSize="5.0"
-            android:value="0.0" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:text="Crown Dieback (%)"
+ android:textSize="14sp" />
+ <com.google.android.material.slider.Slider
+ android:id="@+id/sliderDieback"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:valueFrom="0.0"
+ android:valueTo="100.0"
+ android:stepSize="5.0"
+ android:value="0.0" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Damage Type"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroupDamage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp">
-            <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Insect" />
-            <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disease" />
-            <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fire" />
-            <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wind" />
-            <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Drought" />
-            <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mechanical" />
-        </com.google.android.material.chip.ChipGroup>
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ android:text="Damage Type"
+ android:textSize="14sp"
+ android:textStyle="bold" />
+ <com.google.android.material.chip.ChipGroup
+ android:id="@+id/chipGroupDamage"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="4dp">
+ <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Insect" />
+ <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disease" />
+ <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fire" />
+ <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wind" />
+ <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Drought" />
+ <com.google.android.material.chip.Chip style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mechanical" />
+ </com.google.android.material.chip.ChipGroup>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResults"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E1E3E8"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-                <TextView
-                    android:id="@+id/resHealthScore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_primary" />
-                <TextView
-                    android:id="@+id/resHealthCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-                <TextView
-                    android:id="@+id/resRecommendation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_primary" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardResults"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ app:cardCornerRadius="20dp"
+ app:cardElevation="0dp"
+ app:strokeWidth="1dp"
+ app:strokeColor="#E1E3E8"
+ android:visibility="gone">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="20dp">
+ <TextView
+ android:id="@+id/resHealthScore"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:textSize="24sp"
+ android:textStyle="bold"
+ android:layout_gravity="center_horizontal"
+ android:textAlignment="center"
+ android:textColor="@color/text_primary" />
+ <TextView
+ android:id="@+id/resHealthCategory"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_gravity="center_horizontal"
+ android:textAlignment="center"
+ android:textStyle="bold"
+ android:textColor="@color/text_primary" />
+ <TextView
+ android:id="@+id/resRecommendation"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:textAlignment="center"
+ android:textColor="@color/text_primary" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Calculate &amp; Save"
-            android:backgroundTint="@color/forest_green" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnSave"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Calculate &amp; Save"
+ android:backgroundTint="@color/forest_green" />
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>
