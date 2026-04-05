@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
@@ -53,7 +54,7 @@ class DataFragment : Fragment() {
             holder.title.text = item.title
             holder.subtitle.text = item.subtitle
             holder.card.setOnClickListener {
-                // Future: Navigate to export or detailed list
+                it.findNavController().navigate(R.id.action_dataFragment_to_exportCenterFragment)
             }
         }
 

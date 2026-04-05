@@ -57,16 +57,19 @@ class TimberVolumeFragment : Fragment() {
             val vSmalian = (PI / 8.0) * ((dBase / 100.0).pow(2) + (dTop / 100.0).pow(2)) * length
             val vNewton = (length / 6.0) * ((PI/4)*(dBase/100).pow(2) + 4*(PI/4)*(dMid/100).pow(2) + (PI/4)*(dTop/100).pow(2))
 
+            val formFactor = if (length > 0 && dBase > 0) vNewton / ((PI / 4) * (dBase / 100).pow(2) * length) else 0.0
+
             view.findViewById<TextView>(R.id.resHuber).text = "%.3f m³".format(vHuber)
             view.findViewById<TextView>(R.id.resSmalian).text = "%.3f m³".format(vSmalian)
             view.findViewById<TextView>(R.id.resNewton).text = "%.3f m³".format(vNewton)
+            view.findViewById<TextView>(R.id.resFormFactor).text = "%.3f".format(formFactor)
             cardResults.visibility = View.VISIBLE
 
             viewModel.insertTimberVolume(TimberVolume(
                 logId = editLogId.text.toString(), species = "", length = length,
                 dBase = dBase, dMid = dMid, dTop = dTop, barkThickness = bark,
                 volumeHuber = vHuber, volumeSmalian = vSmalian, volumeNewton = vNewton,
-                formFactor = vNewton / ((PI/4)*(dBase/100).pow(2)*length), formulaUsed = "All",
+                formFactor = formFactor, formulaUsed = "All",
                 latitude = null, longitude = null
             ))
         }

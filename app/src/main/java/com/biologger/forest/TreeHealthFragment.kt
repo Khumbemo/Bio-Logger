@@ -41,7 +41,12 @@ class TreeHealthFragment : Fragment() {
         val cardResults = view.findViewById<MaterialCardView>(R.id.cardResults)
 
         btnSave.setOnClickListener {
-            val status = view.findViewById<RadioButton>(radioGroupStatus.checkedRadioButtonId).text.toString()
+            val checkedId = radioGroupStatus.checkedRadioButtonId
+            if (checkedId == -1) {
+                Toast.makeText(requireContext(), "Select health status", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val status = view.findViewById<RadioButton>(checkedId).text.toString()
             val severity = sliderSeverity.value.toInt()
             val dieback = sliderDieback.value.toDouble()
 

@@ -55,7 +55,7 @@ class DisturbanceIndexFragment : Fragment() {
             cardResults.visibility = View.VISIBLE
 
             viewModel.insertDisturbanceRecord(DisturbanceRecord(
-                plotId = view.findViewById<TextView>(R.id.editPlotId).text.toString(),
+                plotId = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.editPlotId).text.toString(),
                 date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()),
                 indicatorScoresJson = Gson().toJson(sliders.mapValues { it.value.value }), diPercent = di, category = cat,
                 photoPath = null, latitude = null, longitude = null, notes = null

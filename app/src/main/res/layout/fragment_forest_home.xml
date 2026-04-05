@@ -1,227 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/forestScrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:fillViewport="true"
-    android:background="#F5F7FA">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:id="@+id/forestScrollView"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:fillViewport="true"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical">
 
-        <!-- Banner Image -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:src="@drawable/ic_forest"
-            android:scaleType="centerInside"
-            android:padding="32dp"
-            android:background="@color/forest_green"
-            android:contentDescription="Forest Header" />
+ <!-- Banner Image -->
+ <ImageView
+ android:layout_width="match_parent"
+ android:layout_height="160dp"
+ android:src="@drawable/ic_forest"
+ android:scaleType="centerInside"
+ android:padding="32dp"
+ android:background="@color/forest_green"
+ android:contentDescription="Forest Header" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Survey Configuration"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/onSurface"
-                android:textAllCaps="true"
-                android:letterSpacing="0.1" />
+ <TextView
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ style="@style/ScientificLabel"
+ android:text="Survey Configuration" />
 
-            <!-- Project ID Input -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editSurveyProject"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Project Code (e.g. FOR-2024)" />
-            </com.google.android.material.textfield.TextInputLayout>
+ <!-- Project ID Input -->
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="12dp"
+ >
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editSurveyProject"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:hint="Enter Project Code (e.g. FOR-2024)" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Site Spinner -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Research Site / Compartment"
-                android:textSize="12sp"
-                android:textColor="#606368" />
-            <Spinner
-                android:id="@+id/spinnerSite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:minHeight="48dp" />
+ <!-- Site Spinner -->
+ <TextView
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ style="@style/ScientificLabel"
+ android:text="Research Site / Compartment" />
+ <Spinner
+ android:id="@+id/spinnerSite"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="4dp"
+ android:minHeight="48dp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E1E3E8"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp"/>
+ <View
+ android:layout_width="match_parent"
+ android:layout_height="1dp"
+ android:background="#E1E3E8"
+ android:layout_marginTop="24dp"
+ android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Available Tools"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/onSurface"
-                android:textAllCaps="true"
-                android:letterSpacing="0.1" />
+ <TextView
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ style="@style/ScientificLabel"
+ android:text="Available Tools" />
 
-            <androidx.gridlayout.widget.GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:columnCount="2">
+ <androidx.gridlayout.widget.GridLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ app:columnCount="2">
 
-                <!-- Tree Measurement -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardTreeMeasurement"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#E1E3E8"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tree Data" android:textStyle="bold" android:textColor="#1A1C1E" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Height/DBH" android:textSize="12sp" android:textColor="#606368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+ <!-- Tree Measurement -->
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardTreeMeasurement"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ app:layout_columnWeight="1"
+ android:layout_margin="6dp"
+ style="@style/GlassCard"
+ android:clickable="true"
+ android:focusable="true"
+ android:foreground="?attr/selectableItemBackground">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tree Data" style="@style/ScientificTitle" />
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Height/DBH" style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-                <!-- Basal Area -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardBasalArea"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#E1E3E8"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Basal Area" android:textStyle="bold" android:textColor="#1A1C1E" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot calc" android:textSize="12sp" android:textColor="#606368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+ <!-- Basal Area -->
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardBasalArea"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ app:layout_columnWeight="1"
+ android:layout_margin="6dp"
 
-                <!-- Stand Density -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardStandDensity"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#E1E3E8"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Density" android:textStyle="bold" android:textColor="#1A1C1E" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SDI metrics" android:textSize="12sp" android:textColor="#606368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
-                <!-- Biomass Estimator -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardBiomass"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#E1E3E8"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biomass" android:textStyle="bold" android:textColor="#1A1C1E" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carbon log" android:textSize="12sp" android:textColor="#606368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
-                <!-- GPS and Mapping -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardGpsAndMapping"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#E1E3E8"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPS Map" android:textStyle="bold" android:textColor="#1A1C1E" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot mapping" android:textSize="12sp" android:textColor="#606368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
-                <!-- Disturbance Index -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardDisturbanceIndex"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#E1E3E8"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disturbance" android:textStyle="bold" android:textColor="#1A1C1E" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fire/Scoring" android:textSize="12sp" android:textColor="#606368" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+ android:clickable="true"
+ android:focusable="true"
+ android:foreground="?attr/selectableItemBackground">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Basal Area" style="@style/ScientificTitle" />
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot calc" style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
 
-            </androidx.gridlayout.widget.GridLayout>
+ <!-- Stand Density -->
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardStandDensity"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ app:layout_columnWeight="1"
+ android:layout_margin="6dp"
 
-            <!-- Submit/Save Configuration -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSubmitContext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Lock Survey Context"
-                app:cornerRadius="8dp" />
 
-        </LinearLayout>
-    </LinearLayout>
+
+
+ android:clickable="true"
+ android:focusable="true"
+ android:foreground="?attr/selectableItemBackground">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Density" style="@style/ScientificTitle" />
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SDI metrics" style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ <!-- Biomass Estimator -->
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardBiomass"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ app:layout_columnWeight="1"
+ android:layout_margin="6dp"
+
+
+
+
+ android:clickable="true"
+ android:focusable="true"
+ android:foreground="?attr/selectableItemBackground">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biomass" style="@style/ScientificTitle" />
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carbon log" style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ <!-- GPS and Mapping -->
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardGpsAndMapping"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ app:layout_columnWeight="1"
+ android:layout_margin="6dp"
+
+
+
+
+ android:clickable="true"
+ android:focusable="true"
+ android:foreground="?attr/selectableItemBackground">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPS Map" style="@style/ScientificTitle" />
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plot mapping" style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ <!-- Disturbance Index -->
+ <com.google.android.material.card.MaterialCardView
+ android:id="@+id/cardDisturbanceIndex"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ app:layout_columnWeight="1"
+ android:layout_margin="6dp"
+
+
+
+
+ android:clickable="true"
+ android:focusable="true"
+ android:foreground="?attr/selectableItemBackground">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disturbance" style="@style/ScientificTitle" />
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fire/Scoring" style="@style/ScientificBody" />
+ </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ </androidx.gridlayout.widget.GridLayout>
+
+ <!-- Submit/Save Configuration -->
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnSubmitContext"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="16dp"
+ android:text="Lock Survey Context"
+ app:cornerRadius="8dp" />
+
+ </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -1,101 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="never"
-    android:scrollbars="none"
-    android:background="@color/surface">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:fillViewport="true"
+ android:overScrollMode="never"
+ android:scrollbars="none"
+ android:background="@color/surface">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Irrigation Parameters"
-            style="@style/ScientificLabel"
-            android:textColor="@color/garden_amber" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Irrigation Parameters"
+ style="@style/ScientificLabel"
+ android:textColor="@color/garden_amber" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Plant / Crop Name">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPlantName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Plant / Crop Name">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editPlantName"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Watering Frequency (days)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editFrequency"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Watering Frequency (days)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editFrequency"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="number" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Water Amount (ml)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editAmount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Water Amount (ml)">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editAmount"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:inputType="numberDecimal" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Field Notes">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minLines="3"
-                android:gravity="top"
-                android:inputType="textMultiLine" />
-        </com.google.android.material.textfield.TextInputLayout>
+ <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:hint="Field Notes">
+ <com.google.android.material.textfield.TextInputEditText
+ android:id="@+id/editNotes"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:minLines="3"
+ android:gravity="top"
+ android:inputType="textMultiLine" />
+ </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Save Schedule"
-            android:backgroundTint="@color/garden_amber" />
+ <com.google.android.material.button.MaterialButton
+ android:id="@+id/btnSaveSchedule"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="24dp"
+ android:text="Save Schedule"
+ android:backgroundTint="@color/garden_amber" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Active Schedules"
-            style="@style/ScientificLabel"
-            android:textColor="@color/garden_amber" />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="32dp"
+ android:text="Active Schedules"
+ style="@style/ScientificLabel"
+ android:textColor="@color/garden_amber" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerWatering"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:nestedScrollingEnabled="false" />
+ <androidx.recyclerview.widget.RecyclerView
+ android:id="@+id/recyclerWatering"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:nestedScrollingEnabled="false" />
 
-    </LinearLayout>
+ </LinearLayout>
 </androidx.core.widget.NestedScrollView>

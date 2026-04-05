@@ -58,19 +58,30 @@ class QuadratStudiesFragment : Fragment() {
             if (totalCount == 0) return@setOnClickListener
 
             var shannon = 0.0
+            var simpsonSum = 0.0
             speciesList.forEach {
                 val p = it.count.toDouble() / totalCount
-                if (p > 0) shannon -= p * ln(p)
+                if (p > 0) {
+                    shannon -= p * ln(p)
+                    simpsonSum += it.count * (it.count - 1)
+                }
             }
+            val simpsonD = if (totalCount > 1) 1.0 - (simpsonSum / (totalCount * (totalCount - 1))) else 0.0
+            val evenness = if (speciesList.size > 1) shannon / ln(speciesList.size.toDouble()) else 0.0
 
             view.findViewById<TextView>(R.id.resRichness).text = speciesList.size.toString()
             view.findViewById<TextView>(R.id.resShannon).text = "%.3f".format(shannon)
+            view.findViewById<TextView>(R.id.resSimpson).text = "%.3f".format(simpsonD)
             cardResults.visibility = View.VISIBLE
 
             viewModel.insertQuadratStudy(QuadratStudy(
-                plotId = editPlotId.text.toString(), quadratId = "", size = editSize.text.toString().toDoubleOrNull() ?: 1.0,
+                plotId = editPlotId.text.toString(),
+                quadratId = view.findViewById<TextInputEditText>(R.id.editQuadratId).text.toString(),
+                size = editSize.text.toString().toDoubleOrNull() ?: 1.0,
                 layer = "Herb", speciesDataJson = Gson().toJson(speciesList), richness = speciesList.size,
-                shannonH = shannon, evennessJ = 0.0, simpsonD = 0.0, dominantSpecies = "", latitude = null, longitude = null, notes = null
+                shannonH = shannon, evennessJ = evenness, simpsonD = simpsonD,
+                dominantSpecies = speciesList.maxByOrNull { it.count }?.name ?: "",
+                latitude = null, longitude = null, notes = null
             ))
         }
 
@@ -88,10 +99,11 @@ class QuadratStudiesFragment : Fragment() {
         return view
     }
 
-    class SpeciesAdapter(private val list: List<SpeciesRow>) : RecyclerView.Adapter<SpeciesAdapter.VH>() {
+    class SpeciesAdapter(private val list: MutableList<SpeciesRow>) : RecyclerView.Adapter<SpeciesAdapter.VH>() {
         class VH(v: View) : RecyclerView.ViewHolder(v) {
             val name: TextInputEditText = v.findViewById(R.id.editSpecName)
             val count: TextInputEditText = v.findViewById(R.id.editSpecCount)
+            val remove: android.widget.ImageButton = v.findViewById(R.id.btnRemoveRow)
         }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(LayoutInflater.from(parent.context).inflate(R.layout.item_quadrat_species, parent, false))
         override fun onBindViewHolder(holder: VH, position: Int) {
@@ -100,6 +112,13 @@ class QuadratStudiesFragment : Fragment() {
             holder.count.setText(if (item.count > 0) item.count.toString() else "")
             holder.name.setOnFocusChangeListener { _, h -> if(!h) item.name = holder.name.text.toString() }
             holder.count.setOnFocusChangeListener { _, h -> if(!h) item.count = holder.count.text.toString().toIntOrNull() ?: 0 }
+            holder.remove.setOnClickListener {
+                val currentPos = holder.bindingAdapterPosition
+                if (currentPos != RecyclerView.NO_POSITION) {
+                    list.removeAt(currentPos)
+                    notifyItemRemoved(currentPos)
+                }
+            }
         }
         override fun getItemCount() = list.size
     }

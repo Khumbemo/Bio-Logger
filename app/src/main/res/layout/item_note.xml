@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="16dp" style="@style/GlassCard"
-    app:cardElevation="2dp">
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_margin="8dp"
+ style="@style/GlassCard"
+ >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:gravity="center_vertical"
+ android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textNoteTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Note Title"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+ <TextView
+ android:id="@+id/textNoteTitle" style="@style/ScientificTitle"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Note Title"
 
-            <ImageView
-                android:id="@+id/imageCameraIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@android:drawable/ic_menu_camera"
-                android:visibility="gone" />
-        </LinearLayout>
+ />
 
-        <TextView
-            android:id="@+id/textNoteBodyPreview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="Note content preview goes here..."
-            android:textSize="14sp" />
+ <ImageView
+ android:id="@+id/imageCameraIcon"
+ android:layout_width="20dp"
+ android:layout_height="20dp"
+ android:src="@android:drawable/ic_menu_camera"
+ android:visibility="gone" />
+ </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+ <TextView
+ android:id="@+id/textNoteBodyPreview" style="@style/ScientificBody"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="4dp"
+ android:ellipsize="end"
+ android:maxLines="2"
+ android:text="Note content preview goes here..."
+ />
 
-            <TextView
-                android:id="@+id/textNoteDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date/Time"
-                android:textSize="12sp" />
+ <LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:layout_marginTop="8dp"
+ android:gravity="center_vertical"
+ android:orientation="horizontal">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipModuleTag"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:text="Module"
-                android:textSize="10sp"
-                app:chipMinHeight="24dp" />
-        </LinearLayout>
-    </LinearLayout>
+ <TextView
+ android:id="@+id/textNoteDate" style="@style/ScientificLabel"
+ android:layout_width="0dp"
+ android:layout_height="wrap_content"
+ android:layout_weight="1"
+ android:text="Date/Time"
+ />
+
+ <com.google.android.material.chip.Chip
+ android:id="@+id/chipModuleTag"
+ style="@style/ScientificLabel"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:clickable="false"
+ android:text="Module"
+
+ />
+ </LinearLayout>
+ </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

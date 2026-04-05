@@ -54,8 +54,14 @@ class GrowthRateFragment : Fragment() {
             val r2 = readings.last()
 
             // Relative Growth Rate (RGR) = (ln H2 - ln H1) / (T2 - T1)
-            val rgr = (ln(r2.height) - ln(r1.height)) / (r2.days - r1.days)
-            val agr = (r2.height - r1.height) / (r2.days - r1.days) // Absolute Growth Rate
+            val timeDiff = (r2.days - r1.days).toDouble()
+            if (timeDiff <= 0 || r1.height <= 0 || r2.height <= 0) {
+                Toast.makeText(context, "Invalid input: Positive height and time progression required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val rgr = (ln(r2.height) - ln(r1.height)) / timeDiff
+            val agr = (r2.height - r1.height) / timeDiff // Absolute Growth Rate
 
             Toast.makeText(context, "RGR: %.4f cm/cm/day".format(rgr), Toast.LENGTH_LONG).show()
 

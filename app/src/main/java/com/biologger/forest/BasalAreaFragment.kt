@@ -123,7 +123,13 @@ class BasalAreaFragment : Fragment() {
             holder.dbh.setText(if (item.dbh > 0) item.dbh.toString() else "")
             holder.species.setOnFocusChangeListener { _, h -> if (!h) item.species = holder.species.text.toString() }
             holder.dbh.setOnFocusChangeListener { _, h -> if (!h) item.dbh = holder.dbh.text.toString().toDoubleOrNull() ?: 0.0 }
-            holder.remove.setOnClickListener { list.removeAt(holder.adapterPosition); notifyItemRemoved(holder.adapterPosition) }
+            holder.remove.setOnClickListener {
+                val currentPos = holder.bindingAdapterPosition
+                if (currentPos != RecyclerView.NO_POSITION) {
+                    list.removeAt(currentPos)
+                    notifyItemRemoved(currentPos)
+                }
+            }
         }
         override fun getItemCount() = list.size
     }
