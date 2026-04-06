@@ -1,11 +1,15 @@
 package com.biologger
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -18,6 +22,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +31,12 @@ class MainActivity : AppCompatActivity() {
     private var backPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("BioLoggerPrefs", Context.MODE_PRIVATE)
+        val isDarkMode = prefs.getBoolean("isDarkMode", true)
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDarkMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
+
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
@@ -100,5 +111,33 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_guidelines -> {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Bio-Logger Guidelines")
+                    .setMessage("Welcome to Bio-Logger.\n\n• Forest Capture: Ecological surveys and timber logic.\n• Agro Climatic Lab: Controlled greenhouse tests.\n• Garden Scape: Horticulture layouts.\n• Note Vault: Storage.\n\nUse the menu to toggle Light/Dark themes dynamically.")
+                    .setPositiveButton("Got It", null)
+                    .show()
+                true
+            }
+            R.id.action_toggle_theme -> {
+                val prefs = getSharedPreferences("BioLoggerPrefs", Context.MODE_PRIVATE)
+                val currentlyDark = prefs.getBoolean("isDarkMode", true)
+                prefs.edit().putBoolean("isDarkMode", !currentlyDark).apply()
+                AppCompatDelegate.setDefaultNightMode(
+                    if (!currentlyDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

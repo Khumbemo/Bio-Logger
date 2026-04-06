@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Cyber-Organic Palette -->
+    <color name="forest_green">#00E676</color>
+    <color name="greenhouse_teal">#00BFA5</color>
+    <color name="garden_amber">#FFD600</color>
+    <color name="vault_purple">#D1C4E9</color>
+
+    <color name="primary">#00E676</color>
+    <color name="primary_dark">#00C853</color>
+    <color name="surface">#0A0B10</color>
+    <color name="onSurface">#E0E0E0</color>
+    <color name="surfaceVariant">#1A1C2E</color>
+    <color name="onSurfaceVariant">#B0B0B0</color>
+    
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="divider">#30344F</color>
+</resources>

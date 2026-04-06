@@ -12,6 +12,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import android.view.animation.DecelerateInterpolator
 
 class HomeFragment : Fragment() {
 
@@ -42,6 +43,19 @@ class HomeFragment : Fragment() {
         checkLocationPermission()
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Modern scientific entrance animation
+        view.alpha = 0f
+        view.translationY = 80f
+        view.animate()
+            .alpha(1f)
+            .translationY(0f)
+            .setDuration(600)
+            .setInterpolator(DecelerateInterpolator(1.5f))
+            .start()
     }
 
     private fun checkLocationPermission() {
